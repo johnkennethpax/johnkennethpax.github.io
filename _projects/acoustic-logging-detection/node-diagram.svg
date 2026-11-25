@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="Helvetica, Arial, sans-serif">
+  <rect width="800" height="450" fill="#f3f5fb"/>
+  <text x="400" y="60" text-anchor="middle" font-size="26" font-weight="bold" fill="#1a1c20">Transmitter Node</text>
+  <g font-size="18" fill="#1a1c20" text-anchor="middle">
+    <rect x="40" y="170" width="150" height="90" rx="10" fill="#fff" stroke="#4a76ee" stroke-width="3"/>
+    <text x="115" y="210">MAX4466 mic</text><text x="115" y="235" font-size="14" fill="#555">audio in</text>
+    <rect x="235" y="170" width="150" height="90" rx="10" fill="#fff" stroke="#4a76ee" stroke-width="3"/>
+    <text x="310" y="210">RP2040</text><text x="310" y="235" font-size="14" fill="#555">ADC sampling</text>
+    <rect x="430" y="170" width="150" height="90" rx="10" fill="#fff" stroke="#4a76ee" stroke-width="3"/>
+    <text x="505" y="210">FFT</text><text x="505" y="235" font-size="14" fill="#555">chainsaw band</text>
+    <rect x="625" y="170" width="150" height="90" rx="10" fill="#fff" stroke="#4a76ee" stroke-width="3"/>
+    <text x="700" y="210">LoRa P2P</text><text x="700" y="235" font-size="14" fill="#555">SX1276, ~1 km</text>
+    <rect x="235" y="320" width="150" height="60" rx="10" fill="#fff" stroke="#999" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="310" y="356" font-size="15">18650 + TP4056</text>
+  </g>
+  <g stroke="#0c0cf2" stroke-width="3" fill="none">
+    <path d="M190 215 H228"/><path d="M385 215 H423"/><path d="M580 215 H618"/><path d="M310 320 V267"/>
+  </g>
+  <g fill="#0c0cf2">
+    <path d="M235 215 l-10 -6 v12z"/><path d="M430 215 l-10 -6 v12z"/><path d="M625 215 l-10 -6 v12z"/><path d="M310 260 l-6 10 h12z"/>
+  </g>
+</svg>
