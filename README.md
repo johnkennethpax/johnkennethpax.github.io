@@ -1,6 +1,6 @@
 # johnkennethpax.github.io
 
-Portfolio of **John Kenneth S. Paco**: BS Electrical Engineering student and DOLE Safety Officer 2, building embedded and IoT systems.
+Portfolio of **John Kenneth S. Paco**: BS Electrical Engineering student and Qualified Safety Officer 2, building embedded and IoT systems.
 
 **Live:** https://johnkennethpax.github.io
 

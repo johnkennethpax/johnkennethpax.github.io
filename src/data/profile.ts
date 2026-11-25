@@ -26,7 +26,7 @@ export interface SkillGroup {
 export const profile = {
   name: 'John Kenneth S. Paco',
   shortName: 'Ken Paco',
-  headline: 'BS Electrical Engineering | DOLE Safety Officer 2',
+  headline: 'BS Electrical Engineering | Qualified Safety Officer 2',
   summary: [
     'I build embedded and IoT systems, from sensor interfacing and power design to firmware and on-device signal processing.',
     "I'm currently leading my undergraduate thesis at St. Peter's College: an RP2040 acoustic sensor that detects chainsaws with TinyML and sends alerts over LoRa.",
