@@ -36,7 +36,6 @@
   .card-hover:hover { @apply border-fg; }
   .dash-list > li { @apply relative pl-5; }
   .dash-list > li::before { content: ''; @apply absolute left-0 top-[0.72em] h-px w-2.5 bg-smoke; }
-  .img-mono { filter: grayscale(1) contrast(1.05); }
 }
 
 /* Spotlight card: radial light + border beam that follow the pointer (CSS vars set in JS, no re-render). */
@@ -64,8 +63,25 @@
   .spotlight-card .spot-light, .spotlight-card .spot-border { display: none; }
 }
 
+/* Ctrl+P: printable portfolio in black on white. Motion styles are neutralised so nothing prints hidden. */
 @media print {
   .no-print { display: none !important; }
+  html, body { background: #ffffff !important; color: #000000 !important; }
+  body * { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; box-shadow: none !important; backdrop-filter: none !important; }
+  #root .text-fg, #root h1, #root h2, #root h3, #root h4, #root dd, #root strong { color: #000000 !important; }
+  #root .text-ash, #root .text-smoke, #root .meta, #root .label { color: #404040 !important; }
+  #root .card, #root .bg-surface, #root .bg-raised, #root .pill, #root .spotlight-card { background: transparent !important; border-color: #d4d4d4 !important; }
+  #root .border-hairline { border-color: #d4d4d4 !important; }
+  #root .pill { color: #262626 !important; }
+  #root .spot-light, #root .spot-border { display: none !important; }
+  #root svg rect[fill='#0a0a0a'] { fill: #ffffff; }
+  #root svg path[stroke='#ffffff'] { stroke: #000000; }
+  #root svg text.fill-white { fill: #000000; }
+  #root a[href^='http']::after { content: ' (' attr(href) ')'; font-size: 9pt; color: #404040; }
+  #root .card:not(.spotlight-card), #root figure, #root li { break-inside: avoid; }
+  #root h2, #root h3, #root h4 { break-after: avoid; }
+  #root section[id] { padding-top: 1.5rem !important; }
+  #root details > summary { display: none; }
 }
 
 /* CV page: print / PDF in black on white. */

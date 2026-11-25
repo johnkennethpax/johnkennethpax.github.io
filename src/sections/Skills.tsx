@@ -7,7 +7,7 @@ export function Skills() {
     <Section id="skills" index="04" title="Technical Skills">
       <div className="grid gap-4 sm:grid-cols-2">
         {skills.map((g, i) => (
-          <BlurFade key={g.label} delay={(i % 2) * 0.08 + Math.floor(i / 2) * 0.04} className="card card-hover p-5">
+          <BlurFade key={g.label} delay={i * 0.05} className="card card-hover p-5">
             <h3 className="text-sm font-bold text-fg">{g.label}</h3>
             <ul className="mt-3 flex flex-wrap gap-2">
               {g.items.map((s) => (

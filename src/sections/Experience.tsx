@@ -8,7 +8,7 @@ export function Experience() {
     <Section id="experience" index="03" title="Experience & Leadership">
       <ol className="space-y-4">
         {experience.map((e, i) => (
-          <BlurFade as="li" key={e.title} delay={i * 0.08}>
+          <BlurFade as="li" key={e.title} delay={i * 0.05}>
             <EntryCard entry={e} />
           </BlurFade>
         ))}

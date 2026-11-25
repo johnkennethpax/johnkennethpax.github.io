@@ -24,7 +24,7 @@ export function Credentials() {
     <Section id="credentials" index="05" title="Certifications & Awards">
       <div className="grid gap-4 xl:grid-cols-2">
         <BlurFade><List title="Certifications" items={certifications} /></BlurFade>
-        <BlurFade delay={0.08}><List title="Awards" items={awards} /></BlurFade>
+        <BlurFade delay={0.05}><List title="Awards" items={awards} /></BlurFade>
       </div>
     </Section>
   );

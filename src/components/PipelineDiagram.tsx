@@ -1,19 +1,15 @@
 // Excalidraw-style (hand-drawn) black-and-white block diagram of the thesis signal pipeline.
 // Strokes are jittered with a seeded PRNG so the sketch looks hand-drawn but renders identically every time.
 
+import { thesis } from '../data/profile';
+
 interface Block {
   title: string;
   sub: string;
   emphasis?: boolean;
 }
 
-const BLOCKS: Block[] = [
-  { title: 'Acoustic Sensor', sub: 'GY-MAX4466 mic' },
-  { title: 'RP2040', sub: 'DMA · FFT → MFE' },
-  { title: 'TinyML', sub: 'int8 CNN · 3 classes', emphasis: true },
-  { title: 'LoRa P2P', sub: '923 MHz · SX1276' },
-  { title: 'Base Station', sub: 'Pico + laptop (USB)' },
-];
+const BLOCKS: Block[] = thesis.signalFlow;
 
 function prng(seed: number) {
   let s = seed >>> 0;
@@ -80,7 +76,7 @@ function Horizontal() {
   const txEnd = xs[3] + bw;
   return (
     <svg viewBox="0 0 1000 260" className="h-auto w-full" role="img" aria-labelledby="pipe-h-title">
-      <title id="pipe-h-title">Thesis signal pipeline: acoustic sensor, RP2040 DMA and FFT, TinyML int8 CNN, 923 MHz LoRa point-to-point, base station.</title>
+      <title id="pipe-h-title">Signal flow: microphone and ADC, RP2040 DMA buffer with FFT and MFE features, TinyML int8 CNN classifier, 923 MHz LoRa point-to-point, base station.</title>
       <rect width="1000" height="260" rx="14" fill="#0a0a0a" />
       {/* group brackets */}
       <path d={roughLine(r, x0, 58, txEnd, 58, 1.2)} {...STROKE} stroke="#737373" strokeWidth={1.2} strokeDasharray="6 6" />
@@ -110,7 +106,7 @@ function Vertical() {
   const ys = BLOCKS.map((_, i) => y0 + i * (bh + gap));
   return (
     <svg viewBox="0 0 360 640" className="h-auto w-full" role="img" aria-labelledby="pipe-v-title">
-      <title id="pipe-v-title">Thesis signal pipeline: acoustic sensor, RP2040 DMA and FFT, TinyML int8 CNN, 923 MHz LoRa point-to-point, base station.</title>
+      <title id="pipe-v-title">Signal flow: microphone and ADC, RP2040 DMA buffer with FFT and MFE features, TinyML int8 CNN classifier, 923 MHz LoRa point-to-point, base station.</title>
       <rect width="360" height="640" rx="14" fill="#0a0a0a" />
       <text x={x0} y={38} className="fill-[#a3a3a3] font-mono text-[11px] tracking-[0.2em]">TRANSMITTER NODE</text>
       <path d={roughLine(r, 36, y0, 36, ys[3] + bh, 1.2)} {...STROKE} stroke="#737373" strokeWidth={1.2} strokeDasharray="6 6" />

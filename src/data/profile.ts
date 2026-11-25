@@ -29,6 +29,9 @@ export const profile = {
   linkedinLabel: 'linkedin.com/in/johnkennethpaco',
   cvPdf: '/John-Kenneth-Paco-CV.pdf',
   headshot: '/img/headshot.webp',
+  mark: '/brand/mark.webp',
+  availability: 'OJT / Cadet Engineer Available',
+  school: "St. Peter's College",
 };
 
 export const about = {
@@ -54,6 +57,17 @@ export const academicWork: string[] = [
 ];
 
 export const thesis = {
+  systemName: 'RP2040 + LoRa Acoustic Telemetry System',
+  // Signal flow shown in the pipeline diagram. The mic is a GY-MAX4466 electret module (not MEMS).
+  signalFlow: [
+    { title: 'Mic / ADC', sub: 'MAX4466 → GP26' },
+    { title: 'DMA Buffer', sub: 'RP2040 · FFT → MFE' },
+    { title: 'TinyML', sub: 'int8 CNN · 3 classes', emphasis: true },
+    { title: 'LoRa 923 MHz', sub: 'SX1276 · P2P' },
+    { title: 'Base Station', sub: 'Pico + laptop (USB)' },
+  ],
+  // No measured benchmarks yet (range, current draw). Add them here once field tests are done.
+  benchmarks: [] as { label: string; value: string }[],
   title: 'Acoustic Event Detection for Illegal Logging Prevention',
   subtitle: 'using Spectral Analysis and LoRa Technology',
   status: 'In progress',

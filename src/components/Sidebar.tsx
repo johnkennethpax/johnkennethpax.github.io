@@ -4,48 +4,71 @@ import { Download, Mail } from 'lucide-react';
 import { profile, sections } from '../data/profile';
 import { TextReveal } from './TextReveal';
 import { GithubIcon, LinkedinIcon } from './BrandIcons';
+import { BrandMark } from './BrandMark';
+import { CopyEmail } from './CopyEmail';
 
 const iconBtn =
-  'inline-flex items-center gap-2 rounded-lg border border-hairline px-3 py-2 text-sm text-ash transition-colors duration-200 hover:border-fg hover:text-fg';
+  'inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-hairline px-3 text-sm text-ash transition-colors duration-200 hover:border-fg hover:text-fg lg:w-10 lg:px-0';
+
+export function DownloadCv({ className = '' }: { className?: string }) {
+  return (
+    <a
+      className={`inline-flex h-10 items-center gap-2 rounded-lg border border-fg bg-fg px-4 text-sm font-bold text-ink transition-colors duration-200 hover:bg-ink hover:text-fg ${className}`}
+      href={profile.cvPdf}
+      download
+    >
+      <Download size={16} aria-hidden="true" /> Download CV <span className="font-mono text-[11px] font-normal opacity-70">(PDF)</span>
+    </a>
+  );
+}
+
+export function AvailabilityBadge() {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-hairline px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-fg">
+      <span className="relative flex h-2 w-2" aria-hidden="true">
+        <span className="absolute inline-flex h-full w-full rounded-full bg-fg opacity-60 motion-safe:animate-ping" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-fg" />
+      </span>
+      {profile.availability}
+    </span>
+  );
+}
 
 export function SocialLinks() {
   return (
-    <div className="flex flex-wrap gap-2">
-      <a className={iconBtn} href={profile.github} target="_blank" rel="noopener noreferrer">
-        <GithubIcon size={16} /> GitHub
+    <>
+      <a className={iconBtn} href={profile.github} target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+        <GithubIcon size={16} /> <span className="lg:sr-only">GitHub</span>
       </a>
-      <a className={iconBtn} href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-        <LinkedinIcon size={16} /> LinkedIn
+      <a className={iconBtn} href={profile.linkedin} target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
+        <LinkedinIcon size={16} /> <span className="lg:sr-only">LinkedIn</span>
       </a>
-      <a className={iconBtn} href={`mailto:${profile.email}`}>
-        <Mail size={16} aria-hidden="true" /> Email
+      <a className={iconBtn} href={`mailto:${profile.email}`} title={profile.email} aria-label={`Email ${profile.email}`}>
+        <Mail size={16} aria-hidden="true" /> <span className="lg:sr-only">Email</span>
       </a>
-      <a
-        className="inline-flex items-center gap-2 rounded-lg border border-fg bg-fg px-3 py-2 text-sm font-bold text-ink transition-colors duration-200 hover:bg-ink hover:text-fg"
-        href={profile.cvPdf}
-        download
-      >
-        <Download size={16} aria-hidden="true" /> Download CV
-      </a>
-    </div>
+      <CopyEmail email={profile.email} className={iconBtn} />
+    </>
   );
 }
 
 export function Sidebar({ active }: { active: string }) {
   return (
-    <header className="pt-12 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[42%] lg:flex-col lg:justify-between lg:gap-6 lg:overflow-y-auto lg:py-14 lg:[@media(min-height:860px)]:py-20 lg:[@media(max-height:820px)]:py-10">
+    <header className={`pt-8 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[42%] lg:flex-col lg:justify-center-safe lg:gap-6 lg:overflow-y-auto lg:py-12 lg:[@media(min-height:1000px)]:py-16 lg:[@media(max-height:880px)]:py-8 print:static print:block print:h-auto print:w-full print:overflow-visible print:py-0`}>
       <div>
+        <a href="#about" className="no-print hidden items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-ash hover:text-fg lg:inline-flex">
+          <BrandMark className="h-7 w-auto" /> Ken Paco <span className="text-smoke">|</span> Electrical Engineering
+        </a>
         <img
           src={profile.headshot}
           width={480}
           height={480}
           alt={`Portrait of ${profile.name}`}
-          className="h-28 w-28 rounded-full border border-hairline object-cover lg:[@media(max-height:820px)]:h-20 lg:[@media(max-height:820px)]:w-20"
+          className={`mt-0 h-28 w-28 rounded-full border border-hairline object-cover lg:mt-7 lg:h-24 lg:w-24 lg:[@media(max-height:880px)]:mt-5 lg:[@media(max-height:880px)]:h-20 lg:[@media(max-height:880px)]:w-20 lg:max-xl:[@media(max-height:880px)]:h-16 lg:max-xl:[@media(max-height:880px)]:w-16`}
         />
         <TextReveal
           as="h1"
           text={profile.name}
-          className="mt-6 text-[2.2rem] font-black leading-[1.05] tracking-tight text-fg sm:text-5xl lg:[@media(max-height:820px)]:mt-4 lg:[@media(max-height:820px)]:text-4xl"
+          className={`mt-6 text-[2.2rem] font-black leading-[1.05] tracking-tight text-fg sm:text-5xl lg:[@media(max-height:880px)]:mt-4 lg:[@media(max-height:880px)]:text-4xl lg:max-xl:[@media(max-height:880px)]:text-3xl`}
         />
         <TextReveal
           text={profile.headline}
@@ -53,9 +76,20 @@ export function Sidebar({ active }: { active: string }) {
           stagger={0.04}
           className="mt-4 font-mono text-[13px] text-fg"
         />
-        <p className="mt-5 max-w-sm leading-relaxed text-ash lg:[@media(max-height:820px)]:mt-3 lg:[@media(max-height:820px)]:text-[15px]">{profile.summary.join(' ')}</p>
+        <p className={`mt-5 max-w-sm leading-relaxed text-ash lg:max-xl:text-sm lg:[@media(max-height:880px)]:mt-3 lg:[@media(max-height:880px)]:text-[15px] lg:max-xl:[@media(max-height:880px)]:text-sm`}>{profile.summary.join(' ')}</p>
 
-        <nav className="no-print mt-10 hidden lg:block lg:[@media(min-height:860px)]:mt-14 lg:[@media(max-height:820px)]:mt-6" aria-label="Sections">
+        <p className="mt-4 hidden font-mono text-xs print:block">
+          {profile.email} · {profile.linkedinLabel} · {profile.location} · {profile.availability}
+        </p>
+        <div className="no-print mt-6 flex flex-wrap items-center gap-2 lg:[@media(max-height:880px)]:mt-4">
+          <DownloadCv />
+          <SocialLinks />
+        </div>
+        <div className="no-print mt-3">
+          <AvailabilityBadge />
+        </div>
+
+        <nav className={`no-print mt-8 hidden lg:block lg:[@media(min-height:1000px)]:mt-10 lg:[@media(max-height:880px)]:mt-6`} aria-label="Sections">
           <ul className="space-y-1">
             {sections.map((s) => {
               const on = active === s.id;
@@ -64,7 +98,7 @@ export function Sidebar({ active }: { active: string }) {
                   <a
                     href={`#${s.id}`}
                     aria-current={on ? 'true' : undefined}
-                    className={`group flex items-center gap-4 py-2 lg:[@media(max-height:820px)]:py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] transition-colors duration-200 ${
+                    className={`group flex items-center gap-4 py-1 lg:[@media(min-height:1000px)]:py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] transition-colors duration-200 ${
                       on ? 'text-fg' : 'text-smoke hover:text-fg'
                     }`}
                   >
@@ -86,9 +120,6 @@ export function Sidebar({ active }: { active: string }) {
         </nav>
       </div>
 
-      <div className="no-print mt-8 lg:mt-0 lg:pb-1">
-        <SocialLinks />
-      </div>
     </header>
   );
 }
@@ -108,7 +139,11 @@ export function MobileNav({ active }: { active: string }) {
       className="no-print sticky top-0 z-40 border-b border-hairline bg-ink/85 backdrop-blur-md lg:hidden"
       aria-label="Sections"
     >
-      <ul ref={listRef} className="relative flex gap-1 overflow-x-auto px-4 [scrollbar-width:none]">
+      <div className="flex items-center">
+      <a href="#about" aria-label="Ken Paco, back to top" className="shrink-0 pl-4 pr-1">
+        <BrandMark className="h-7 w-auto" />
+      </a>
+      <ul ref={listRef} className="relative flex min-w-0 flex-1 gap-1 overflow-x-auto px-2 [scrollbar-width:none]">
         {sections.map((s) => {
           const on = active === s.id;
           return (
@@ -131,6 +166,7 @@ export function MobileNav({ active }: { active: string }) {
           );
         })}
       </ul>
+      </div>
     </nav>
   );
 }
