@@ -1,12 +1,29 @@
 {
-  "name": "johnkennethpax.github.io",
+  "name": "johnkennethpax-portfolio",
   "private": true,
-  "description": "Portfolio of John Kenneth S. Paco. Static HTML + Tailwind CSS + vanilla JS.",
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/site.css --minify",
-    "watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/site.css --watch"
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "cv:pdf": "node scripts/cv-pdf.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "lucide-react": "^1.80.0",
+    "motion": "^14.14.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "tailwindcss": "3.4.17"
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "^26.6.10",
+    "@types/react": "^19.3.3",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
   }
 }

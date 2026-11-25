@@ -6,21 +6,27 @@ Portfolio of **John Kenneth S. Paco**: BS Electrical Engineering student and DOL
 
 ## Stack
 
-Plain static files served by GitHub Pages (no Jekyll, no framework):
+Vite + React + TypeScript + Tailwind CSS, with `motion` for animations and `lucide-react` icons.
+Deployed to GitHub Pages by GitHub Actions (`.github/workflows/deploy.yml`) on every push to `main`.
 
-- `index.html`: single-page portfolio
-- `resume/index.html`: printable CV (Print / Save as PDF)
-- `assets/css/site.css`: compiled Tailwind CSS
-- `assets/js/main.js`: scroll reveals, scroll-spy navigation and cursor spotlight (vanilla JS, respects `prefers-reduced-motion`)
-- `assets/img/`: photos and schematics
+## Editing content
 
-## Editing
-
-Content lives directly in the HTML. If you add new Tailwind classes, rebuild the CSS:
+All text lives in [`src/data/profile.ts`](src/data/profile.ts). The portfolio (`/`) and the CV page (`/resume/`) both render from it.
 
 ```sh
 npm install
-npm run build:css
+npm run dev       # local preview at http://localhost:5173
+npm run build     # type-check and build to dist/
 ```
 
-Commit the updated `assets/css/site.css` along with your HTML changes.
+After changing CV content, regenerate the downloadable PDF (needs Playwright with Chromium) and commit it:
+
+```sh
+npm run build && npm run cv:pdf   # writes public/John-Kenneth-Paco-CV.pdf
+```
+
+## Structure
+
+- `src/sections/`: About, Projects, Experience, Skills, Credentials
+- `src/components/`: sidebar and nav, spotlight card, blur-fade and text reveals, pipeline diagram
+- `public/img/`: photos and schematics; `public/404.html`: not-found page

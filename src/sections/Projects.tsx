@@ -1,0 +1,150 @@
+import { ArrowUpRight, ChevronRight } from 'lucide-react';
+import { thesis } from '../data/profile';
+import { BlurFade } from '../components/BlurFade';
+import { PipelineDiagram } from '../components/PipelineDiagram';
+import { Section } from '../components/Section';
+import { SpotlightCard } from '../components/SpotlightCard';
+
+const H4 = ({ children }: { children: string }) => <h4 className="label text-fg">{children}</h4>;
+
+export function Projects() {
+  return (
+    <Section id="projects" index="02" title="Featured Projects">
+      <BlurFade>
+        <SpotlightCard>
+          <img
+            src={thesis.cover.src}
+            srcSet={thesis.cover.srcSet}
+            sizes="(min-width: 1024px) 640px, 100vw"
+            width={1412}
+            height={1600}
+            alt={thesis.cover.alt}
+            className="img-mono aspect-[16/9] w-full border-b border-hairline object-cover"
+            fetchPriority="high"
+          />
+          <div className="p-6 sm:p-8">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="rounded-full border border-fg px-2.5 font-mono text-[10px] uppercase leading-5 tracking-widest text-fg">
+                {thesis.status}
+              </span>
+              <span className="meta">{thesis.role}</span>
+            </div>
+            <h3 className="mt-4 text-2xl font-bold leading-snug tracking-tight text-fg">{thesis.title}</h3>
+            <p className="mt-1 text-sm text-smoke">{thesis.subtitle}</p>
+            <p className="mt-4 leading-relaxed text-ash">{thesis.summary}</p>
+
+            <dl className="mt-6 grid grid-cols-2 gap-3 xl:grid-cols-4">
+              {thesis.specs.map((s) => (
+                <div key={s.label} className="rounded-xl border border-hairline bg-raised p-3">
+                  <dt className="meta">{s.label}</dt>
+                  <dd className="mt-1 font-mono text-[13px] text-fg">{s.value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technologies">
+              {thesis.tags.map((t) => (
+                <li key={t} className="pill">{t}</li>
+              ))}
+            </ul>
+
+            <div className="mt-8">
+              <PipelineDiagram />
+            </div>
+
+            <details className="group/details mt-8 border-t border-hairline pt-6">
+              <summary className="group inline-flex items-center gap-2 text-sm font-bold text-fg">
+                <ChevronRight size={16} aria-hidden="true" className="transition-transform duration-300 group-open/details:rotate-90" />
+                Engineering details
+                <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </summary>
+
+              <div className="mt-6 space-y-10 text-[15px] leading-relaxed text-ash">
+                <p className="meta">Team: {thesis.team}</p>
+
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div><H4>Problem</H4><p className="mt-2">{thesis.problem}</p></div>
+                  <div><H4>Solution</H4><p className="mt-2">{thesis.solution}</p></div>
+                </div>
+
+                <div>
+                  <H4>How it works</H4>
+                  <ol className="mt-3 space-y-2">
+                    {thesis.steps.map((s, i) => (
+                      <li key={s} className="flex gap-3">
+                        <span className="font-mono text-fg">{String(i + 1).padStart(2, '0')}</span>
+                        <span>{s}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                <div>
+                  <H4>Hardware</H4>
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                    {thesis.schematics.map((s) => (
+                      <a key={s.src} href={s.src} target="_blank" rel="noopener" className="group block overflow-hidden rounded-xl border border-hairline transition-colors hover:border-fg">
+                        <img src={s.src} width={1169} height={827} loading="lazy" alt={s.alt} className="img-mono w-full bg-white" />
+                        <span className="flex items-center justify-between px-3 py-2 meta">
+                          {s.caption} schematic <ArrowUpRight size={14} aria-hidden="true" />
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                  <ul className="dash-list mt-4 space-y-2">
+                    {thesis.hardware.map((h) => (
+                      <li key={h.label}><span className="text-fg">{h.label}:</span> {h.text}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <H4>Design targets</H4>
+                    <p className="mt-2">Not yet measured results:</p>
+                    <ul className="dash-list mt-2 space-y-1">
+                      {thesis.targets.map((t) => <li key={t}>{t}</li>)}
+                    </ul>
+                  </div>
+                  <div><H4>Engineering challenge</H4><p className="mt-2">{thesis.challenge}</p></div>
+                </div>
+
+                <div>
+                  <H4>Next steps</H4>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {thesis.nextSteps.map((n) => <li key={n} className="pill">{n}</li>)}
+                  </ul>
+                </div>
+
+                <div>
+                  <H4>Build log</H4>
+                  <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    {thesis.gallery.map((g, i) => (
+                      <a
+                        key={g.name}
+                        href={`/img/thesis/${g.name}.webp`}
+                        target="_blank"
+                        rel="noopener"
+                        className={`block overflow-hidden rounded-xl border border-hairline transition-colors hover:border-fg ${i === 4 ? 'col-span-2 sm:col-span-1' : ''}`}
+                      >
+                        <img
+                          src={`/img/thesis/${g.name}-sm.webp`}
+                          width={g.w}
+                          height={g.h}
+                          loading="lazy"
+                          alt={g.alt}
+                          className={`img-mono w-full object-cover ${i === 4 ? 'aspect-[3/2] sm:aspect-[3/4]' : 'aspect-[3/4]'}`}
+                        />
+                      </a>
+                    ))}
+                  </div>
+                  <p className="meta mt-2">Photos shown in grayscale; open one to see it in full color.</p>
+                </div>
+              </div>
+            </details>
+          </div>
+        </SpotlightCard>
+      </BlurFade>
+    </Section>
+  );
+}
