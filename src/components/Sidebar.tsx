@@ -33,19 +33,19 @@ export function SocialLinks() {
 
 export function Sidebar({ active }: { active: string }) {
   return (
-    <header className="pt-12 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[42%] lg:flex-col lg:justify-between lg:py-20">
+    <header className="pt-12 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[42%] lg:flex-col lg:justify-between lg:gap-6 lg:overflow-y-auto lg:py-14 lg:[@media(min-height:860px)]:py-20 lg:[@media(max-height:820px)]:py-10">
       <div>
         <img
           src={profile.headshot}
-          width={320}
-          height={320}
+          width={480}
+          height={480}
           alt={`Portrait of ${profile.name}`}
-          className="img-mono h-14 w-14 rounded-full border border-hairline object-cover"
+          className="img-mono h-28 w-28 rounded-full border border-hairline object-cover lg:[@media(max-height:820px)]:h-20 lg:[@media(max-height:820px)]:w-20"
         />
         <TextReveal
           as="h1"
           text={profile.name}
-          className="mt-6 text-[2.2rem] font-black leading-[1.05] tracking-tight text-fg sm:text-5xl"
+          className="mt-6 text-[2.2rem] font-black leading-[1.05] tracking-tight text-fg sm:text-5xl lg:[@media(max-height:820px)]:mt-4 lg:[@media(max-height:820px)]:text-4xl"
         />
         <TextReveal
           text={profile.headline}
@@ -53,9 +53,9 @@ export function Sidebar({ active }: { active: string }) {
           stagger={0.04}
           className="mt-4 font-mono text-[13px] text-fg"
         />
-        <p className="mt-5 max-w-sm leading-relaxed text-ash">{profile.summary.join(' ')}</p>
+        <p className="mt-5 max-w-sm leading-relaxed text-ash lg:[@media(max-height:820px)]:mt-3 lg:[@media(max-height:820px)]:text-[15px]">{profile.summary.join(' ')}</p>
 
-        <nav className="no-print mt-14 hidden lg:block" aria-label="Sections">
+        <nav className="no-print mt-10 hidden lg:block lg:[@media(min-height:860px)]:mt-14 lg:[@media(max-height:820px)]:mt-6" aria-label="Sections">
           <ul className="space-y-1">
             {sections.map((s) => {
               const on = active === s.id;
@@ -64,7 +64,7 @@ export function Sidebar({ active }: { active: string }) {
                   <a
                     href={`#${s.id}`}
                     aria-current={on ? 'true' : undefined}
-                    className={`group flex items-center gap-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] transition-colors duration-200 ${
+                    className={`group flex items-center gap-4 py-2 lg:[@media(max-height:820px)]:py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] transition-colors duration-200 ${
                       on ? 'text-fg' : 'text-smoke hover:text-fg'
                     }`}
                   >
@@ -86,7 +86,7 @@ export function Sidebar({ active }: { active: string }) {
         </nav>
       </div>
 
-      <div className="no-print mt-8 lg:mt-0">
+      <div className="no-print mt-8 lg:mt-0 lg:pb-1">
         <SocialLinks />
       </div>
     </header>

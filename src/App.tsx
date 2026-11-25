@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { MotionConfig } from 'motion/react';
 import { profile, sections } from './data/profile';
 import { useScrollSpy } from './hooks/useScrollSpy';
@@ -12,6 +13,12 @@ const ids = sections.map((s) => s.id);
 
 export default function App() {
   const active = useScrollSpy(ids);
+
+  // The page renders after the browser's own jump to #section, so honor the hash once mounted.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) document.getElementById(id)?.scrollIntoView({ block: 'start' });
+  }, []);
   return (
     <MotionConfig reducedMotion="user">
       <a
