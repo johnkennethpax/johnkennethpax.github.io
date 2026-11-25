@@ -1,19 +1,26 @@
-# John Kenneth Paco — Portfolio
+# johnkennethpax.github.io
 
-Source for my personal portfolio site: **https://johnkennethpax.github.io**
+Portfolio of **John Kenneth S. Paco**: BS Electrical Engineering student and DOLE Safety Officer 2, building embedded and IoT systems.
 
-I'm a BS Electrical Engineering student at St. Peter's College, Iligan City (expected 2027), working on embedded systems, sensor interfacing, and signal processing with Arduino and the Raspberry Pi Pico (RP2040). I'm also a COSH-trained Safety Officer 2 (SO2).
+**Live:** https://johnkennethpax.github.io
 
-## Featured project
+## Stack
 
-**Acoustic Event Detection for Illegal Logging Prevention** (undergraduate thesis, in progress)
-Battery-powered Raspberry Pi Pico nodes that detect chainsaw sounds with on-device FFT and send alerts over a LoRa point-to-point link, designed for a 1 km off-grid range in Barangay Mandulog.
-[Read more on the site](https://johnkennethpax.github.io/projects/acoustic-logging-detection/index/)
+Plain static files served by GitHub Pages (no Jekyll, no framework):
 
-## Contact
+- `index.html`: single-page portfolio
+- `resume/index.html`: printable CV (Print / Save as PDF)
+- `assets/css/site.css`: compiled Tailwind CSS
+- `assets/js/main.js`: scroll reveals, scroll-spy navigation and cursor spotlight (vanilla JS, respects `prefers-reduced-motion`)
+- `assets/img/`: photos and schematics
 
-- LinkedIn: [linkedin.com/in/johnkennethpaco](https://www.linkedin.com/in/johnkennethpaco/)
+## Editing
 
-## Credits
+Content lives directly in the HTML. If you add new Tailwind classes, rebuild the CSS:
 
-Built with [Jekyll](https://jekyllrb.com/) on the [free-to-engineer portfolio template](https://github.com/leea12/freeToEngineer) by Lowinertia. See `LICENSE`.
+```sh
+npm install
+npm run build:css
+```
+
+Commit the updated `assets/css/site.css` along with your HTML changes.

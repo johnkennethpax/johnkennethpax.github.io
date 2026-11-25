@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" font-family="Inter, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t">
+  <title id="t">System diagram: transmitter node (microphone, RP2040 ADC with DMA, FFT to MFE features, int8 CNN, SX1276 LoRa) sends alerts over a LoRa link to the receiver (SX1276 LoRa, Raspberry Pi Pico, laptop over USB).</title>
+  <rect width="960" height="420" rx="16" fill="#0d1424"/>
+  <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="13" letter-spacing="1.5" fill="#22d3ee">
+    <text x="40" y="44">TRANSMITTER NODE</text>
+    <text x="660" y="44">RECEIVER</text>
+  </g>
+  <rect x="20" y="58" width="480" height="342" rx="14" fill="none" stroke="#1e293b" stroke-dasharray="6 5"/>
+  <rect x="640" y="58" width="300" height="342" rx="14" fill="none" stroke="#1e293b" stroke-dasharray="6 5"/>
+  <g font-size="16" fill="#e6edf7" text-anchor="middle">
+    <g fill="#111a2e" stroke="#334155" stroke-width="1.5">
+      <rect x="45" y="82" width="190" height="70" rx="10"/><rect x="285" y="82" width="190" height="70" rx="10"/>
+      <rect x="285" y="192" width="190" height="70" rx="10"/><rect x="45" y="192" width="190" height="70" rx="10"/>
+      <rect x="45" y="302" width="190" height="70" rx="10" stroke="#22d3ee"/>
+      <rect x="665" y="82" width="250" height="70" rx="10" stroke="#22d3ee"/>
+      <rect x="665" y="192" width="250" height="70" rx="10"/><rect x="665" y="302" width="250" height="70" rx="10"/>
+    </g>
+    <text x="140" y="113">GY-MAX4466</text><text x="380" y="113">RP2040 ADC</text>
+    <text x="380" y="223">FFT → MFE</text><text x="140" y="223">int8 CNN</text>
+    <text x="140" y="333">SX1276 LoRa</text><text x="790" y="113">SX1276 LoRa</text>
+    <text x="790" y="232">Raspberry Pi Pico</text><text x="790" y="342">Laptop (USB)</text>
+    <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" fill="#94a3b8">
+      <text x="140" y="135">microphone</text><text x="380" y="135">DMA sampling</text>
+      <text x="380" y="245">features</text><text x="140" y="245">chainsaw · noise · unknown</text>
+      <text x="140" y="355">alert · 923 MHz P2P</text><text x="790" y="135">receive alert</text>
+    </g>
+  </g>
+  <g stroke="#64748b" stroke-width="2" fill="none">
+    <path d="M235 117 H277"/><path d="M380 152 V184"/><path d="M285 227 H243"/><path d="M140 262 V294"/>
+    <path d="M790 152 V184"/><path d="M790 262 V294"/>
+  </g>
+  <path d="M235 337 H560 V117 H657" stroke="#fbbf24" stroke-width="2" fill="none" stroke-dasharray="8 6"/>
+  <g fill="#64748b">
+    <path d="M285 117 l-9 -5 v10z"/><path d="M380 192 l-5 -9 h10z"/><path d="M235 227 l9 -5 v10z"/><path d="M140 302 l-5 -9 h10z"/>
+    <path d="M790 192 l-5 -9 h10z"/><path d="M790 302 l-5 -9 h10z"/>
+  </g>
+  <path d="M665 117 l-9 -5 v10z" fill="#fbbf24"/>
+  <text x="582" y="230" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" fill="#fbbf24" transform="rotate(-90 582 230)" text-anchor="middle">LoRa link · target ≤ 1 km</text>
+</svg>

@@ -1,0 +1,12 @@
+{
+  "name": "johnkennethpax.github.io",
+  "private": true,
+  "description": "Portfolio of John Kenneth S. Paco. Static HTML + Tailwind CSS + vanilla JS.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/site.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/site.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

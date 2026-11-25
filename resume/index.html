@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV | John Kenneth S. Paco</title>
+  <meta name="description" content="Curriculum vitae of John Kenneth S. Paco, BS Electrical Engineering student and DOLE Safety Officer 2.">
+  <meta name="theme-color" content="#0a0f1c">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    @page { size: A4; margin: 14mm; }
+    @media print {
+      html, body { background: #fff !important; color: #111 !important; }
+      .cv * { color: #111 !important; border-color: #ccc !important; background: transparent !important; }
+      .cv a { text-decoration: none; }
+      .cv section { break-inside: avoid-page; }
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print sticky top-0 z-10 border-b border-line bg-ink/85 backdrop-blur">
+    <div class="mx-auto flex max-w-3xl items-center justify-between px-4 py-3 sm:px-8">
+      <a href="/" class="group text-sm text-fg-muted hover:text-fg"><span class="nudge inline-block rotate-180">→</span> Portfolio</a>
+      <button type="button" onclick="window.print()" class="btn border-cyan/40 text-cyan hover:border-cyan hover:text-cyan">Print / Save as PDF</button>
+    </div>
+  </div>
+
+  <main class="cv mx-auto max-w-3xl px-4 py-12 text-[15px] leading-relaxed text-fg-muted sm:px-8 print:max-w-none print:p-0 print:text-[11pt]">
+    <header class="border-b border-line pb-6 text-center">
+      <h1 class="text-3xl font-bold tracking-tight text-fg">John Kenneth S. Paco, SO2</h1>
+      <p class="mt-2 font-mono text-xs text-fg-dim">
+        <a class="hover:text-cyan" href="mailto:johnkennethpax@gmail.com">johnkennethpax@gmail.com</a> ·
+        <a class="hover:text-cyan" href="https://www.linkedin.com/in/johnkennethpaco/" target="_blank" rel="noopener noreferrer">linkedin.com/in/johnkennethpaco</a> ·
+        Iligan City, Philippines
+      </p>
+    </header>
+
+    <section class="mt-8">
+      <h2 class="eyebrow">Skills</h2>
+      <ul class="mt-3 space-y-1">
+        <li><span class="font-medium text-fg">Electrical and Hardware:</span> Circuit Assembly, Wiring, Sensor Interfacing, Troubleshooting</li>
+        <li><span class="font-medium text-fg">Embedded Systems:</span> Arduino, Raspberry Pi Pico (RP2040), I2C, SPI, UART, C++, Fast Fourier Transform (FFT)</li>
+        <li><span class="font-medium text-fg">Signal Processing and ML:</span> DMA sampling, Edge Impulse, TinyML</li>
+        <li><span class="font-medium text-fg">Software and Tools:</span> Python, Git, QGIS, LaTeX, Microsoft Excel, Microsoft Word</li>
+        <li><span class="font-medium text-fg">Safety:</span> Construction Occupational Safety and Health (COSH) SO2</li>
+      </ul>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="eyebrow">Experience</h2>
+      <div class="mt-3 space-y-5">
+        <div>
+          <div class="flex flex-wrap justify-between gap-x-4"><h3 class="font-semibold text-fg">On-the-Job Trainee (Upcoming)</h3><span class="meta">Dec 2026 – Jan 2027</span></div>
+        </div>
+        <div>
+          <div class="flex flex-wrap justify-between gap-x-4"><h3 class="font-semibold text-fg">Vice President – External and Technical</h3><span class="meta">AY 2025 – 2027</span></div>
+          <p class="text-sm text-fg-dim">IIEE-CSC SPC Chapter, St. Peter's College</p>
+          <ul class="prose-list mt-2 space-y-1">
+            <li>Secured a partnership with Macapagal Review and Training Center, coordinating a review program orientation for 200+ EE students during the department general assembly.</li>
+            <li>Organized hardware interfacing workshops for 200+ student participants, managing logistics and event execution.</li>
+            <li>Led the chapter's publicity and social media operations, producing pubmats and tarpaulins for every chapter event.</li>
+            <li>Designed the chapter's new logo, establishing a consistent visual identity across its publications.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="flex flex-wrap justify-between gap-x-4"><h3 class="font-semibold text-fg">SK Councilor and Budget Monitoring Officer</h3><span class="meta">Oct 2023 – Present</span></div>
+          <p class="text-sm text-fg-dim">Barangay Acmac, Iligan City</p>
+          <ul class="prose-list mt-2 space-y-1">
+            <li>Monitored approximately PHP 1,200,000 in youth council funds and program expenditures serving around 600 youth constituents.</li>
+            <li>Initiated a job fair forum under the Committee on Economic Empowerment to connect local youth with employment opportunities.</li>
+            <li>Implemented youth programs, including financial assistance for selected high school and college students, study kits and meals for MSU-SASE takers, and fiesta sports activities.</li>
+            <li>Arranged venues, logistics, and supplies for barangay youth assemblies and outreach activities.</li>
+            <li>Reviewed project proposals and purchase requests to keep spending practical and focused on youth needs.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="eyebrow">Projects</h2>
+      <div class="mt-3">
+        <div class="flex flex-wrap justify-between gap-x-4"><h3 class="font-semibold text-fg"><a class="hover:text-cyan" href="/#projects">Acoustic Event Detection for Illegal Logging Prevention</a></h3><span class="meta">In Progress</span></div>
+        <p class="text-sm text-fg-dim">Undergraduate Thesis (thesis lead)</p>
+        <ul class="prose-list mt-2 space-y-1">
+          <li>Led the hardware design, firmware development, and system integration of a battery-powered Raspberry Pi Pico (RP2040) sensor node and LoRa receiver.</li>
+          <li>Built an on-device audio pipeline (DMA sampling, FFT-based MFE features, int8 CNN from Edge Impulse) that classifies chainsaw, noise, and unknown sounds.</li>
+          <li>Built a LoRa point-to-point (SX1276, 923 MHz) alert link, designed for a 1 km off-grid range.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="eyebrow">Education</h2>
+      <div class="mt-3 space-y-3">
+        <div>
+          <div class="flex flex-wrap justify-between gap-x-4"><h3 class="font-semibold text-fg">Bachelor of Science in Electrical Engineering</h3><span class="meta">2024 – Expected 2027</span></div>
+          <p class="text-sm text-fg-dim">St. Peter's College, Iligan City</p>
+          <ul class="prose-list mt-2 space-y-1">
+            <li>Quizzer, 39th Regional Quiz Show, 21st RSCON <span class="meta">· Oct 2026</span></li>
+            <li>Second Runner-up, 24th Regional Math Wizard, 20th RSCON <span class="meta">· Oct 2025</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="flex flex-wrap justify-between gap-x-4"><h3 class="font-semibold text-fg">Electronics Engineering (Transferred)</h3><span class="meta">2022 – 2024</span></div>
+          <p class="text-sm text-fg-dim">Mindanao State University – Iligan Institute of Technology</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="eyebrow">Certifications</h2>
+      <ul class="mt-3 space-y-1">
+        <li class="flex flex-wrap justify-between gap-x-4"><span>40-Hour COSH Training with 2-Hour Training of Trainers, Serendipity MPC (DOLE-Accredited)</span><span class="meta">Oct 2026</span></li>
+        <li class="flex flex-wrap justify-between gap-x-4"><span>Procore Construction Management Professional Certificate, Procore Technologies</span><span class="meta">Feb 2026</span></li>
+        <li class="flex flex-wrap justify-between gap-x-4"><span>Become an Arduino Developer Learning Path, LinkedIn Learning</span><span class="meta">Feb 2026</span></li>
+        <li class="flex flex-wrap justify-between gap-x-4"><span>Excel for Engineering Professionals, LinkedIn Learning</span><span class="meta">Jan 2026</span></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

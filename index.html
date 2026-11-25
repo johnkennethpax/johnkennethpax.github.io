@@ -1,21 +1,310 @@
----
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ken Paco | Electrical Engineering Portfolio</title>
+  <meta name="description" content="John Kenneth S. Paco: BS Electrical Engineering student and DOLE Safety Officer 2 building embedded and IoT systems, including an RP2040 + LoRa acoustic sensor for illegal logging detection.">
+  <meta name="theme-color" content="#0a0f1c">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ken Paco | Electrical Engineering Portfolio">
+  <meta property="og:description" content="Embedded systems, IoT and signal processing projects by John Kenneth S. Paco.">
+  <meta property="og:url" content="https://johnkennethpax.github.io/">
+  <meta property="og:image" content="https://johnkennethpax.github.io/assets/img/headshot.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>document.documentElement.classList.replace('no-js','js');setTimeout(function(){if(!window.__portfolioReady)document.documentElement.classList.remove('js')},2500);</script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="relative">
+  <a href="#projects" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink-800 focus:px-4 focus:py-2 focus:text-fg">Skip to content</a>
+  <div class="spotlight" aria-hidden="true"></div>
 
-layout: wrapper
----
+  <!-- Mobile top nav -->
+  <nav class="no-print sticky top-0 z-40 border-b border-line bg-ink/85 backdrop-blur lg:hidden" aria-label="Sections">
+    <div class="flex gap-1 overflow-x-auto px-4 py-2 [scrollbar-width:none]">
+      <a class="mnav-link" data-spy-link href="#projects">Projects</a>
+      <a class="mnav-link" data-spy-link href="#experience">Experience</a>
+      <a class="mnav-link" data-spy-link href="#skills">Skills</a>
+      <a class="mnav-link" data-spy-link href="#education">Education</a>
+      <a class="mnav-link" data-spy-link href="#credentials">Certs</a>
+    </div>
+  </nav>
 
-{% include hero.html%}
+  <div class="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-8 lg:flex lg:gap-12 lg:px-12 xl:gap-20">
 
+    <!-- Sidebar -->
+    <header class="pt-12 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[42%] lg:flex-col lg:justify-between lg:py-20">
+      <div>
+        <img src="/assets/img/headshot.webp" width="320" height="320" alt="Portrait of John Kenneth S. Paco" class="h-16 w-16 rounded-full object-cover ring-1 ring-line">
+        <h1 class="mt-6 text-[2.15rem] font-bold leading-tight tracking-tight text-fg sm:text-5xl">John Kenneth S. Paco</h1>
+        <p class="mt-3 font-mono text-sm text-cyan">BS Electrical Engineering <span class="text-fg-dim">|</span> DOLE Safety Officer 2</p>
+        <p class="mt-5 max-w-sm leading-relaxed text-fg-muted">
+          I build embedded and IoT systems, from sensor interfacing and power design to firmware and on-device signal processing.
+          I'm currently leading my undergraduate thesis at St. Peter's College: an RP2040 acoustic sensor that detects chainsaws with TinyML and sends alerts over LoRa.
+        </p>
 
+        <nav class="no-print relative mt-14 hidden lg:block" aria-label="Sections">
+          <ul class="space-y-1">
+            <li><a class="nav-link" data-spy-link href="#projects"><span class="bar"></span>Projects</a></li>
+            <li><a class="nav-link" data-spy-link href="#experience"><span class="bar"></span>Experience</a></li>
+            <li><a class="nav-link" data-spy-link href="#skills"><span class="bar"></span>Skills</a></li>
+            <li><a class="nav-link" data-spy-link href="#education"><span class="bar"></span>Education</a></li>
+            <li><a class="nav-link" data-spy-link href="#credentials"><span class="bar"></span>Certifications</a></li>
+          </ul>
+        </nav>
+      </div>
 
-<div class="arrow"> 
-    <a href="#projects">
-        More About Me
-    <i class="fa-solid fa-angles-down"></i>
-    </a> 
-</div>
-{% include projects.html%}
-{% include profile-sections.html%}
-{% include skills.html%}
-{% include contact.html%}
+      <div class="no-print mt-8 flex flex-wrap gap-2 lg:mt-0">
+        <a class="btn" href="https://github.com/johnkennethpax" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/johnkennethpaco/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.064 2.064 0 1 1 0-4.128 2.064 2.064 0 0 1 0 4.128zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="mailto:johnkennethpax@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+          Email
+        </a>
+        <a class="btn border-cyan/40 text-cyan hover:border-cyan hover:text-cyan" href="/resume/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+          CV
+        </a>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main id="content" class="pb-24 pt-16 lg:w-[58%] lg:py-20">
+
+      <!-- Featured Projects -->
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title" class="eyebrow" data-reveal>01 · Featured Projects</h2>
+
+        <article class="project-card card mt-6 overflow-hidden" data-reveal>
+          <img src="/assets/img/thesis/nodes-side-by-side-sm.webp"
+               srcset="/assets/img/thesis/nodes-side-by-side-sm.webp 635w, /assets/img/thesis/nodes-side-by-side.webp 1412w"
+               sizes="(min-width: 1024px) 640px, 100vw" width="1412" height="1600"
+               alt="Transmitter and receiver nodes on breadboards: Raspberry Pi Pico boards, SX1276 LoRa modules with coil antennas, and TP4056 charging modules"
+               class="aspect-[16/9] w-full object-cover" fetchpriority="high">
+          <div class="p-6 sm:p-8">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-md bg-amber-soft px-2 py-0.5 font-mono text-[11px] uppercase tracking-wider text-amber">In progress</span>
+              <span class="meta">Undergraduate thesis · Thesis lead</span>
+            </div>
+            <h3 class="mt-4 text-xl font-semibold leading-snug text-fg sm:text-2xl">Acoustic Event Detection for Illegal Logging Prevention</h3>
+            <p class="mt-1 text-sm text-fg-dim">using Spectral Analysis and LoRa Technology</p>
+            <p class="mt-4 leading-relaxed text-fg-muted">
+              A battery-powered Raspberry Pi Pico (RP2040) sensor node listens for 2-stroke chainsaws, classifies the sound on the device,
+              and sends an alert over LoRa without cellular or internet service. Working prototype; I lead the project and handle the
+              hardware design, firmware development, and system integration.
+            </p>
+
+            <dl class="mt-6 grid grid-cols-2 gap-3 xl:grid-cols-4">
+              <div class="rounded-xl border border-line bg-ink-800/60 p-3"><dt class="meta">Classifier</dt><dd class="mt-1 font-mono text-sm text-fg">int8 CNN · 3 classes</dd></div>
+              <div class="rounded-xl border border-line bg-ink-800/60 p-3"><dt class="meta">Radio</dt><dd class="mt-1 font-mono text-sm text-fg">SX1276 · 923 MHz</dd></div>
+              <div class="rounded-xl border border-line bg-ink-800/60 p-3"><dt class="meta">Link (target)</dt><dd class="mt-1 font-mono text-sm text-fg">≤ 1 km</dd></div>
+              <div class="rounded-xl border border-line bg-ink-800/60 p-3"><dt class="meta">Radius (target)</dt><dd class="mt-1 font-mono text-sm text-fg">80–150 m</dd></div>
+            </dl>
+
+            <ul class="mt-6 flex flex-wrap gap-2" aria-label="Technologies">
+              <li class="tag">RP2040</li><li class="tag">C++</li><li class="tag">Edge Impulse</li><li class="tag">TinyML</li>
+              <li class="tag">FFT / MFE</li><li class="tag">DMA</li><li class="tag">LoRa P2P</li><li class="tag">SPI</li><li class="tag">Li-ion power</li>
+            </ul>
+
+            <details class="mt-6 border-t border-line pt-5">
+              <summary class="group inline-flex items-center gap-2 text-sm font-medium text-cyan">
+                <span class="chev" aria-hidden="true">›</span> Engineering details <span class="nudge" aria-hidden="true">→</span>
+              </summary>
+
+              <div class="mt-6 space-y-8 text-[15px] leading-relaxed text-fg-muted">
+                <p class="meta">Team: Paco (thesis lead), Cabatino, Dador</p>
+
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <div><h4 class="font-mono text-xs uppercase tracking-widest text-fg">Problem</h4><p class="mt-2">Remote forests often lack cellular coverage, and satellite monitoring detects forest loss only after it happens.</p></div>
+                  <div><h4 class="font-mono text-xs uppercase tracking-widest text-fg">Solution</h4><p class="mt-2">A sensor node listens for 2-stroke chainsaws, classifies the sound on the device, and sends an alert over LoRa without cellular or internet service.</p></div>
+                </div>
+
+                <div>
+                  <h4 class="font-mono text-xs uppercase tracking-widest text-fg">How it works</h4>
+                  <img src="/assets/img/thesis/system-diagram.svg" width="960" height="420" loading="lazy" class="mt-3 w-full rounded-xl border border-line"
+                       alt="System diagram: microphone, RP2040 ADC with DMA, FFT to MFE features, int8 CNN and SX1276 LoRa on the transmitter; SX1276 LoRa, Raspberry Pi Pico and a laptop on the receiver">
+                  <ol class="mt-4 space-y-2">
+                    <li><span class="font-mono text-cyan">01</span>&nbsp; A GY-MAX4466 microphone captures ambient sound.</li>
+                    <li><span class="font-mono text-cyan">02</span>&nbsp; A Raspberry Pi Pico (RP2040) samples the audio using DMA.</li>
+                    <li><span class="font-mono text-cyan">03</span>&nbsp; FFT-based Mel-filterbank energy (MFE) features are extracted.</li>
+                    <li><span class="font-mono text-cyan">04</span>&nbsp; A quantized int8 CNN, built in Edge Impulse, classifies three classes: chainsaw, noise, and unknown.</li>
+                    <li><span class="font-mono text-cyan">05</span>&nbsp; An SX1276 LoRa module sends the alert peer-to-peer at 923 MHz.</li>
+                    <li><span class="font-mono text-cyan">06</span>&nbsp; A Pico and LoRa receiver connects to a laptop over USB.</li>
+                  </ol>
+                </div>
+
+                <div>
+                  <h4 class="font-mono text-xs uppercase tracking-widest text-fg">Hardware</h4>
+                  <div class="mt-3 grid gap-3 sm:grid-cols-2">
+                    <a href="/assets/img/thesis/schematic-transmitter.png" target="_blank" rel="noopener" class="block overflow-hidden rounded-xl border border-line bg-white">
+                      <img src="/assets/img/thesis/schematic-transmitter.png" width="1169" height="827" loading="lazy" class="w-full" alt="Transmitter node schematic drawn in EasyEDA">
+                    </a>
+                    <a href="/assets/img/thesis/schematic-receiver.png" target="_blank" rel="noopener" class="block overflow-hidden rounded-xl border border-line bg-white">
+                      <img src="/assets/img/thesis/schematic-receiver.png" width="1169" height="827" loading="lazy" class="w-full" alt="Receiver node schematic drawn in EasyEDA">
+                    </a>
+                  </div>
+                  <p class="meta mt-2">Transmitter (left) and receiver (right) schematics, EasyEDA. Tap to enlarge.</p>
+                  <ul class="prose-list mt-4 space-y-2">
+                    <li><span class="text-fg">Power:</span> each node runs from an 18650 Li-ion cell charged through a TP4056 USB-C module. The TP4056 output feeds the Pico's VSYS input through a 1N4007 diode, and the Pico's 3.3 V output powers the microphone and LoRa modules.</li>
+                    <li><span class="text-fg">Audio:</span> the MAX4466 output feeds the RP2040's ADC (GP26 / ADC0).</li>
+                    <li><span class="text-fg">Radio:</span> the SX1276 connects over SPI (GP16 to GP19), with DIO0 and RST on GP20 and GP21.</li>
+                  </ul>
+                </div>
+
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <h4 class="font-mono text-xs uppercase tracking-widest text-fg">Design targets</h4>
+                    <p class="mt-2">Not yet measured results:</p>
+                    <ul class="prose-list mt-2 space-y-1"><li>Detection radius of 80–150 m per node</li><li>LoRa link of up to 1 km</li></ul>
+                  </div>
+                  <div>
+                    <h4 class="font-mono text-xs uppercase tracking-widest text-fg">Engineering challenge</h4>
+                    <p class="mt-2">The transmitter gave false alerts in rain. The planned fix is to record rain audio through the transmitter itself and add it to the classifier's training data.</p>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="font-mono text-xs uppercase tracking-widest text-fg">Next steps</h4>
+                  <ul class="mt-3 flex flex-wrap gap-2">
+                    <li class="tag">PCB design</li><li class="tag">Better antennas</li><li class="tag">Enclosures</li><li class="tag">Field testing</li>
+                    <li class="tag">Receiver dashboard: status, alert log, RSSI, location, alarm</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 class="font-mono text-xs uppercase tracking-widest text-fg">Build log</h4>
+                  <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    <a href="/assets/img/thesis/transmitter-node.webp" target="_blank" rel="noopener" class="block overflow-hidden rounded-xl border border-line"><img src="/assets/img/thesis/transmitter-node-sm.webp" width="540" height="720" loading="lazy" class="aspect-[3/4] w-full object-cover" alt="Transmitter node on breadboard with microphone module, LoRa module and charger"></a>
+                    <a href="/assets/img/thesis/receiver-node.webp" target="_blank" rel="noopener" class="block overflow-hidden rounded-xl border border-line"><img src="/assets/img/thesis/receiver-node-sm.webp" width="540" height="720" loading="lazy" class="aspect-[3/4] w-full object-cover" alt="Receiver node on breadboard with Raspberry Pi Pico H and LoRa module"></a>
+                    <a href="/assets/img/thesis/transmitter-breadboard.webp" target="_blank" rel="noopener" class="block overflow-hidden rounded-xl border border-line"><img src="/assets/img/thesis/transmitter-breadboard-sm.webp" width="540" height="720" loading="lazy" class="aspect-[3/4] w-full object-cover" alt="Early transmitter breadboard prototype"></a>
+                    <a href="/assets/img/thesis/lora-module-soldered.webp" target="_blank" rel="noopener" class="block overflow-hidden rounded-xl border border-line"><img src="/assets/img/thesis/lora-module-soldered-sm.webp" width="443" height="720" loading="lazy" class="aspect-[3/4] w-full object-cover" alt="Close-up of hand-soldered leads on the SX1276 LoRa module"></a>
+                    <a href="/assets/img/thesis/bench-testing.webp" target="_blank" rel="noopener" class="col-span-2 block overflow-hidden rounded-xl border border-line"><img src="/assets/img/thesis/bench-testing-sm.webp" width="692" height="720" loading="lazy" class="aspect-[3/2] w-full object-cover sm:aspect-[3/4]" alt="Bench testing both nodes with a multimeter and an 18650 battery"></a>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+      </section>
+
+      <!-- Experience & Leadership -->
+      <section id="experience" class="mt-24" aria-labelledby="experience-title">
+        <h2 id="experience-title" class="eyebrow" data-reveal>02 · Experience &amp; Leadership</h2>
+        <ol class="mt-6 space-y-4" data-reveal-group>
+          <li class="card p-6" data-reveal>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 class="font-semibold text-fg">On-the-Job Trainee <span class="ml-1 rounded-md bg-amber-soft px-2 py-0.5 align-middle font-mono text-[11px] uppercase tracking-wider text-amber">Upcoming</span></h3>
+              <span class="meta">Dec 2026 – Jan 2027</span>
+            </div>
+          </li>
+          <li class="card p-6" data-reveal>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 class="font-semibold text-fg">Vice President – External and Technical</h3>
+              <span class="meta">AY 2025 – 2027</span>
+            </div>
+            <p class="mt-1 text-sm text-fg-dim">IIEE-CSC SPC Chapter, St. Peter's College</p>
+            <ul class="prose-list mt-4 space-y-2 text-[15px] leading-relaxed text-fg-muted">
+              <li>Secured a partnership with Macapagal Review and Training Center, coordinating a review program orientation for 200+ EE students during the department general assembly.</li>
+              <li>Organized hardware interfacing workshops for 200+ student participants, managing logistics and event execution.</li>
+              <li>Led the chapter's publicity and social media operations, producing pubmats and tarpaulins for every chapter event.</li>
+              <li>Designed the chapter's new logo, establishing a consistent visual identity across its publications.</li>
+            </ul>
+          </li>
+          <li class="card p-6" data-reveal>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 class="font-semibold text-fg">SK Councilor and Budget Monitoring Officer</h3>
+              <span class="meta">Oct 2023 – Present</span>
+            </div>
+            <p class="mt-1 text-sm text-fg-dim">Barangay Acmac, Iligan City</p>
+            <ul class="prose-list mt-4 space-y-2 text-[15px] leading-relaxed text-fg-muted">
+              <li>Monitored approximately <span class="font-mono text-fg">PHP 1,200,000</span> in youth council funds and program expenditures serving around <span class="font-mono text-fg">600</span> youth constituents.</li>
+              <li>Initiated a job fair forum under the Committee on Economic Empowerment to connect local youth with employment opportunities.</li>
+              <li>Implemented youth programs, including financial assistance for selected high school and college students, study kits and meals for MSU-SASE takers, and fiesta sports activities.</li>
+              <li>Arranged venues, logistics, and supplies for barangay youth assemblies and outreach activities.</li>
+              <li>Reviewed project proposals and purchase requests to keep spending practical and focused on youth needs.</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Technical Skills -->
+      <section id="skills" class="mt-24" aria-labelledby="skills-title">
+        <h2 id="skills-title" class="eyebrow" data-reveal>03 · Technical Skills</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2" data-reveal-group>
+          <div class="card p-5" data-reveal><h3 class="text-sm font-semibold text-fg">Electrical &amp; Hardware</h3><ul class="mt-3 flex flex-wrap gap-2"><li class="tag">Circuit assembly</li><li class="tag">Wiring</li><li class="tag">Sensor interfacing</li><li class="tag">Troubleshooting</li></ul></div>
+          <div class="card p-5" data-reveal><h3 class="text-sm font-semibold text-fg">Embedded Systems</h3><ul class="mt-3 flex flex-wrap gap-2"><li class="tag">Arduino</li><li class="tag">Raspberry Pi Pico (RP2040)</li><li class="tag">C++</li><li class="tag">I2C</li><li class="tag">SPI</li><li class="tag">UART</li></ul></div>
+          <div class="card p-5" data-reveal><h3 class="text-sm font-semibold text-fg">Signal Processing &amp; ML</h3><ul class="mt-3 flex flex-wrap gap-2"><li class="tag">FFT</li><li class="tag">DMA sampling</li><li class="tag">Edge Impulse</li><li class="tag">TinyML</li></ul></div>
+          <div class="card p-5" data-reveal><h3 class="text-sm font-semibold text-fg">Software &amp; Tools</h3><ul class="mt-3 flex flex-wrap gap-2"><li class="tag">Python</li><li class="tag">Git</li><li class="tag">QGIS</li><li class="tag">LaTeX</li><li class="tag">Excel</li><li class="tag">Word</li></ul></div>
+          <div class="card p-5" data-reveal><h3 class="text-sm font-semibold text-fg">Safety</h3><ul class="mt-3 flex flex-wrap gap-2"><li class="tag">COSH · Safety Officer 2</li></ul></div>
+          <div class="card p-5" data-reveal><h3 class="text-sm font-semibold text-fg">Creative</h3><ul class="mt-3 flex flex-wrap gap-2"><li class="tag">Canva</li><li class="tag">Publicity material design</li><li class="tag">Logo design</li></ul></div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="mt-24" aria-labelledby="education-title">
+        <h2 id="education-title" class="eyebrow" data-reveal>04 · Education</h2>
+        <ol class="mt-6 space-y-4" data-reveal-group>
+          <li class="card p-6" data-reveal>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 class="font-semibold text-fg">BS Electrical Engineering</h3><span class="meta">2024 – Expected 2027</span>
+            </div>
+            <p class="mt-1 text-sm text-fg-dim">St. Peter's College, Iligan City</p>
+          </li>
+          <li class="card p-6" data-reveal>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 class="font-semibold text-fg">Electronics Engineering <span class="font-normal text-fg-dim">(transferred)</span></h3><span class="meta">2022 – 2024</span>
+            </div>
+            <p class="mt-1 text-sm text-fg-dim">Mindanao State University – Iligan Institute of Technology</p>
+          </li>
+          <li class="card p-6" data-reveal>
+            <h3 class="font-semibold text-fg">Academic work</h3>
+            <ul class="prose-list mt-3 space-y-2 text-[15px] leading-relaxed text-fg-muted">
+              <li>IEEE-format report on distributed generation (Electrical Power Systems Quality)</li>
+              <li>PowerWorld Simulator experiments (Power Systems Analysis Lab)</li>
+              <li>Group report on the schematic arrangement of a diesel power station</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Certifications & Awards -->
+      <section id="credentials" class="mt-24" aria-labelledby="credentials-title">
+        <h2 id="credentials-title" class="eyebrow" data-reveal>05 · Certifications &amp; Awards</h2>
+        <div class="mt-6 grid gap-4 lg:grid-cols-1 xl:grid-cols-2" data-reveal-group>
+          <div class="card p-6" data-reveal>
+            <h3 class="font-mono text-xs uppercase tracking-widest text-fg-dim">Certifications</h3>
+            <ul class="mt-4 space-y-4">
+              <li><p class="font-medium text-fg">40-Hour COSH Training with 2-Hour Training of Trainers (Safety Officer 2)</p><p class="meta mt-1">Serendipity MPC (DOLE-Accredited) · Oct 2026</p></li>
+              <li><p class="font-medium text-fg">Procore Construction Management Professional Certificate</p><p class="meta mt-1">Procore Technologies · Feb 2026</p></li>
+              <li><p class="font-medium text-fg">Become an Arduino Developer Learning Path</p><p class="meta mt-1">LinkedIn Learning · Feb 2026</p></li>
+              <li><p class="font-medium text-fg">Excel for Engineering Professionals</p><p class="meta mt-1">LinkedIn Learning · Jan 2026</p></li>
+            </ul>
+          </div>
+          <div class="card p-6" data-reveal>
+            <h3 class="font-mono text-xs uppercase tracking-widest text-fg-dim">Awards</h3>
+            <ul class="mt-4 space-y-4">
+              <li><p class="font-medium text-fg">Quizzer, 39th Regional Quiz Show</p><p class="meta mt-1">21st RSCON · Oct 2026</p></li>
+              <li><p class="font-medium text-fg">Second Runner-up, 24th Regional Math Wizard</p><p class="meta mt-1">20th RSCON · Oct 2025</p></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-24 border-t border-line pt-8 text-sm text-fg-dim">
+        <p>© 2026 John Kenneth S. Paco · Iligan City, Philippines</p>
+        <p class="mt-1">Hand-built with HTML, Tailwind CSS and vanilla JavaScript.</p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
