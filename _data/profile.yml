@@ -1,0 +1,49 @@
+# Content for the Leadership, Education, and Certifications & Awards sections.
+# Source: ken-portfolio-brief.md. Items still marked [CONFIRM] in the brief are left out on purpose.
+
+leadership:
+  - title: VP-External
+    org: IIEE-CSC St. Peter's College Chapter
+    dates: AY 2026–2027
+  - title: VP-Technical
+    org: IIEE-CSC St. Peter's College Chapter
+    dates: AY 2025–2026
+    bullets:
+      - Reached roughly 200+ EE students through technical workshops and external partnerships.
+      - Coordinated with Macapagal Review and Training Center for an orientation at the department general assembly.
+      - Managed the chapter's social media page, event publicity materials and tarpaulins.
+      - Designed the chapter's new logo.
+  - title: SK Councilor and Budget Monitoring Officer
+    org: Sangguniang Kabataan, Barangay Acmac, Iligan City
+    bullets:
+      - Monitored a budget of about PHP 1.2 million serving around 600 youth constituents.
+      - Initiated a job fair forum under the Committee on Economic Empowerment.
+      - "SK programs included student financial assistance, study kits and food for MSU SASE takers, and fiesta sports activities."
+      - "Organized the SK Pasiklaban Dota 2 Tournament (August 2026): 6 teams, double elimination."
+
+education:
+  - title: BS Electrical Engineering
+    org: St. Peter's College, Iligan City
+    dates: Expected 2027
+  - title: Electronics Engineering (transferred)
+    org: Mindanao State University – Iligan Institute of Technology
+    dates: 2022–2024
+
+academic:
+  - IEEE-format report on distributed generation (Electrical Power Systems Quality)
+  - PowerWorld Simulator experiments (Power Systems Analysis Lab)
+  - Group report on the schematic arrangement of a diesel power station
+
+certifications:
+  - title: COSH Safety Officer 2 (SO2)
+    org: 40-hour, DOLE-accredited, Serendipity MPC
+    dates: October 2026
+  - title: Become an Arduino Developer
+    org: LinkedIn Learning
+    dates: February 2026
+
+awards:
+  - title: 3rd Place, 24th Regional Math Wizard
+    dates: October 2025
+  - title: Quizzer, 39th Regional Quiz Show
+    dates: October 2026

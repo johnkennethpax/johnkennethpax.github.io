@@ -1,72 +1,73 @@
 ---
 layout: post
-title: Acoustic Event Detection for Illegal Logging Prevention
+title: Acoustic Event Detection for Illegal Logging Prevention using Spectral Analysis and LoRa Technology
 description: >-
-  Undergraduate thesis (in progress). A pair of battery-powered Raspberry Pi Pico (RP2040) nodes:
-  a transmitter that listens for chainsaw sounds using on-device FFT, and a receiver that gets
-  alerts over a LoRa point-to-point link, designed for a 1 km off-grid range in Barangay Mandulog.
+  Undergraduate thesis. A battery-powered Raspberry Pi Pico (RP2040) sensor node listens for 2-stroke
+  chainsaws, classifies the sound on the device with a TinyML model, and sends an alert over LoRa
+  without cellular or internet service. Working prototype.
 skills:
-  - Raspberry Pi Pico (RP2040)
-  - C++ / Arduino
-  - FFT (arduinoFFT)
-  - LoRa (SX1276) over SPI
-  - Sensor interfacing
-  - Battery power design
+  - RP2040
+  - C++
+  - Edge Impulse / TinyML
+  - DSP (FFT, MFE)
+  - LoRa (SX1276, SPI)
+  - Li-ion battery power
 main-image: /nodes-side-by-side.jpg
 ---
 
-**Status:** In progress, undergraduate thesis, BS Electrical Engineering, St. Peter's College.
-The nodes are currently breadboard prototypes; field-test results will be added once available.
-
-{% include image-gallery.html images="nodes-side-by-side.jpg" height="420" %}
+**Team:** Paco, Cabatino, Dador  
+**My role:** Hardware and firmware development  
+**Status:** Working prototype. PCB, antenna upgrades, enclosures and field testing are ahead.
 
 ## Problem
-Illegal logging in remote forest areas is hard to catch in time because there is no grid power
-or cellular coverage where it happens. The goal is a low-cost sensor node that can hear a
-chainsaw and raise an alert from off-grid.
+Remote forests often lack cellular coverage, and satellite monitoring detects forest loss only after
+it happens.
 
-## My role
-I led the hardware design, firmware development, and system integration of the sensor nodes.
+## Solution
+A sensor node listens for 2-stroke chainsaws, classifies the sound on the device, and sends an alert
+over LoRa without cellular or internet service.
 
-## System overview
-{% include image-gallery.html images="node-diagram.svg" height="260" %}
+## How it works
+{% include image-gallery.html images="node-diagram.svg" height="300" %}
 
-The system has two nodes built on the same power and radio core:
-
-- **Transmitter node:** Raspberry Pi Pico + GY-MAX4466 microphone module + SX1276 LoRa module.
-  It samples audio, runs the detection, and sends an alert.
-- **Receiver node:** Raspberry Pi Pico + SX1276 LoRa module. It receives and reports alerts.
+1. A GY-MAX4466 microphone captures ambient sound.
+2. A Raspberry Pi Pico (RP2040) samples the audio using DMA.
+3. FFT-based Mel-filterbank energy (MFE) features are extracted.
+4. A quantized int8 CNN, built in Edge Impulse, classifies three classes: chainsaw, noise, and unknown.
+5. An SX1276 LoRa module sends the alert peer-to-peer at 923 MHz.
+6. A Pico and LoRa receiver connects to a laptop over USB.
 
 ## Hardware
 {% include image-gallery.html images="schematic-transmitter.png, schematic-receiver.png" height="300" %}
 <span style="font-size: 12px">Transmitter (left) and receiver (right) schematics, drawn in EasyEDA.</span>
 
-### Power
-Each node runs from an 18650 Li-ion cell charged through a TP4056 USB-C charging module. The
-TP4056 output feeds the Pico's VSYS input through a 1N4007 diode, and the Pico's onboard
-3.3 V output (3V3_OUT) powers the microphone module and the LoRa module.
-
-### Audio acquisition
-The MAX4466 microphone amplifier output feeds the RP2040's ADC (GP26 / ADC0).
-
-### Radio
-The SX1276 LoRa module connects to the Pico over SPI (MISO, CS, SCK, MOSI on GP16 to GP19),
-with DIO0 and RST on GP20 and GP21.
+- **Power:** each node runs from an 18650 Li-ion cell charged through a TP4056 USB-C module. The TP4056
+  output feeds the Pico's VSYS input through a 1N4007 diode, and the Pico's 3.3 V output powers the
+  microphone and LoRa modules.
+- **Audio:** the MAX4466 output feeds the RP2040's ADC (GP26 / ADC0).
+- **Radio:** the SX1276 connects over SPI (GP16 to GP19), with DIO0 and RST on GP20 and GP21.
 
 {% include image-gallery.html images="transmitter-node.jpg, receiver-node.jpg" height="420" %}
 <span style="font-size: 12px">Transmitter node (left) and receiver node (right) on breadboard.</span>
 
-## Firmware
-- **Detection:** a Fast Fourier Transform using `arduinoFFT.h` isolates chainsaw frequencies,
-  kept within the microcontroller's memory limits.
-- **Alerting:** a LoRa point-to-point (P2P) link sends real-time telemetry alerts to the
-  receiver, designed for a 1 km off-grid range in Barangay Mandulog.
+## Design targets
+These are design targets, not measured results yet:
+
+- Detection radius of 80–150 m per node
+- LoRa link of up to 1 km
+
+## Engineering challenge
+The transmitter gave false alerts in rain. The planned fix is to record rain audio through the
+transmitter itself and add it to the classifier's training data.
+
+## Next steps
+- PCB design
+- Better antennas
+- Enclosures
+- Field testing
+- Receiver dashboard: live status, alert log, signal strength, node location, and alarm
 
 ## Build log
 {% include image-gallery.html images="transmitter-breadboard.jpg, lora-module-soldered.jpg" height="380" %}
 {% include image-gallery.html images="bench-testing.jpg" height="420" %}
 <span style="font-size: 12px">Early transmitter breadboard, soldered LoRa module leads, and bench testing both nodes.</span>
-
-## Next steps
-- Field testing for detection accuracy and LoRa range
-- Moving from breadboard to a soldered or PCB build with an outdoor enclosure

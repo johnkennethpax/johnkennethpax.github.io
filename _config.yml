@@ -7,20 +7,20 @@
 
 # Main Page Setup
 
-title: John Kenneth Paco | Portfolio # This is what shows up in the tab of the browser
+title: Ken Paco | Portfolio # This is what shows up in the tab of the browser
 
 
 
 # Hero Section
-name: John Kenneth Paco
-first_name: John Kenneth # shown after "I'm" in the hero
-headline: Electrical Engineering Student | Embedded Systems
+name: John Kenneth S. Paco
+first_name: Ken # shown after "I'm" in the hero
+headline: BS Electrical Engineering Student | Embedded Systems & IoT | Safety Officer 2
 description: >- # dont remove this line. this will ignore all new lines until the next section
-  BS Electrical Engineering student at St. Peter's College, Iligan City (expected 2027),
-  working with embedded systems, sensor interfacing, and signal processing on Arduino and
-  Raspberry Pi Pico (RP2040). My undergraduate thesis, in progress, is a LoRa-linked acoustic
-  sensor node that uses FFT to detect chainsaw sounds for illegal logging prevention.
-  COSH-trained Safety Officer 2 (SO2).
+  I am an Electrical Engineering undergraduate at St. Peter's College, Iligan City, expected to
+  graduate in 2027. I build embedded and IoT projects, including an edge-based acoustic system that
+  detects chainsaw activity and sends alerts over LoRa. I also serve in my engineering student
+  organization and as an SK Councilor in Barangay Acmac.
+email: johnkennethpax@gmail.com
 
 # Place your profile image in /assets/images/profile-image/folder and edit the file name
 profile_image: ./assets/images/profile-image/headshot.jpg
@@ -35,7 +35,7 @@ resume-url: https://www.linkedin.com/in/johnkennethpaco/ # replace with /assets/
 
 external-links:    # input only your own url slug. The icons with missing entries will not appear.
   linkedin: johnkennethpaco    # https://www.linkedin.com/in/{your url slug} 
-  github: cerealboy7    # https://github.com/{your url slug} 
+  github: johnkennethpax    # https://github.com/{your url slug} 
   stackoverflow:      # https://stackoverflow.com/users/{your url slug}
   medium:            # https://medium.com/@{your url slug} 
   x-twitter:   # https://x.com/{your url slug} 
@@ -48,30 +48,39 @@ external-links:    # input only your own url slug. The icons with missing entrie
 
 # Skills Section - Add the list of your Skills by categories/tools. The indentation for each level needs to be precise. 
 skills:
-  - category: Electrical and Hardware
+  - category: Hardware
     tools:
-    - Circuit Assembly
+    - Circuit assembly
     - Wiring
-    - Sensor Interfacing
+    - Sensor interfacing
     - Troubleshooting
-  - category: Embedded Systems
+  - category: Embedded
     tools:
     - Arduino
-    - Raspberry Pi Pico (RP2040)
-    - I2C / SPI / UART
-    - C++
-    - Fast Fourier Transform (FFT)
-    - LoRa P2P
-  - category: Software and Tools
+    - RP2040
+    - I2C
+    - SPI
+    - UART
+  - category: Signal Processing and ML
     tools:
+    - FFT
+    - DMA sampling
+    - Edge Impulse
+    - TinyML
+  - category: Programming and Tools
+    tools:
+    - C++
     - Python
     - Git
     - QGIS
-    - Microsoft Excel
-    - Microsoft Word
-  - category: Safety
+    - LaTeX
+    - Excel
+    - Word
+  - category: Creative
     tools:
-    - Construction Occupational Safety and Health (COSH) SO2
+    - Canva
+    - Publicity material design
+    - Logo design
 
 
 # Contact Form Setup. Setup an account and copy over the key. When someone fills out the form, it will be received in your email.

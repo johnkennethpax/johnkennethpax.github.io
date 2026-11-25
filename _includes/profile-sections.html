@@ -1,0 +1,23 @@
+<section id="leadership" class="skills-section entries-section">
+  <h2>Leadership and Community</h2>
+  {% include entries.html items=site.data.profile.leadership %}
+</section>
+
+<section id="education" class="skills-section entries-section">
+  <h2>Education</h2>
+  {% include entries.html items=site.data.profile.education %}
+  {% if site.data.profile.academic %}
+  <div class="entry-card">
+    <span class="entry-title">Academic work</span>
+    <ul class="entry-bullets">
+      {% for a in site.data.profile.academic %}<li>{{ a }}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</section>
+
+<section id="certifications" class="skills-section entries-section">
+  <h2>Certifications and Awards</h2>
+  {% include entries.html items=site.data.profile.certifications %}
+  {% include entries.html items=site.data.profile.awards %}
+</section>

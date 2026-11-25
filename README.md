@@ -8,7 +8,7 @@ I'm a BS Electrical Engineering student at St. Peter's College, Iligan City (exp
 
 **Acoustic Event Detection for Illegal Logging Prevention** (undergraduate thesis, in progress)
 Battery-powered Raspberry Pi Pico nodes that detect chainsaw sounds with on-device FFT and send alerts over a LoRa point-to-point link, designed for a 1 km off-grid range in Barangay Mandulog.
-[Read more on the site](https://johnkennethpax.github.io/projects/acoustic-logging-detection/)
+[Read more on the site](https://johnkennethpax.github.io/projects/acoustic-logging-detection/index/)
 
 ## Contact
 
@@ -16,4 +16,4 @@ Battery-powered Raspberry Pi Pico nodes that detect chainsaw sounds with on-devi
 
 ## Credits
 
-Built with [Jekyll](https://jekyllrb.com/) on the [free-to-engineer portfolio template](https://github.com/leea12/freeToEngineer) by Lowinertia. Licensed under CC0 (see `LICENSE`).
+Built with [Jekyll](https://jekyllrb.com/) on the [free-to-engineer portfolio template](https://github.com/leea12/freeToEngineer) by Lowinertia. See `LICENSE`.

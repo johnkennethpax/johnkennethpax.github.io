@@ -947,3 +947,27 @@ footer p {
       
 }
 
+
+/* LEADERSHIP / EDUCATION / CERTIFICATIONS (cards reuse the skills look) */
+.entries-section .entry-list { list-style: none; padding-left: 0; margin: 0; }
+.entries-section .entry-card {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.entries-section .entry-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.entries-section .entry-title { font-size: 18px; font-weight: 600; }
+.entries-section .entry-dates { font-size: 14px; color: var(--link-color); white-space: nowrap; }
+.entries-section .entry-org { font-size: 15px; opacity: 0.8; }
+.entries-section .entry-bullets { margin: 8px 0 0; padding-left: 20px; font-size: 15px; }
+.entries-section .entry-bullets li { margin-bottom: 4px; }
+
+.contact-section .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 15px; }
+.contact-section .contact-links a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border: 2px solid var(--link-color); border-radius: 10px;
+    color: var(--link-color); text-decoration: none; overflow-wrap: anywhere;
+}
+.contact-section .contact-links a:hover { color: var(--highlight-color); border-color: var(--highlight-color); }
