@@ -2,6 +2,11 @@
 # Sources: Resume_JohnKennethPaco.pdf (leadership, certifications, awards, education) and
 # ken-portfolio-brief.md (academic work, extra SK item). Unconfirmed items are left out on purpose.
 
+internship:
+  # Upcoming. Add org (company, department, city) and bullets once the OJT details are available.
+  - title: On-the-Job Trainee (Upcoming)
+    dates: Dec 2026 – Jan 2027
+
 leadership:
   - title: Vice President – External and Technical
     org: IIEE-CSC SPC Chapter, St. Peter's College
