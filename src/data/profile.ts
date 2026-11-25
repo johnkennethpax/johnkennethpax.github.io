@@ -29,7 +29,6 @@ export const profile = {
   linkedinLabel: 'linkedin.com/in/johnkennethpaco',
   cvPdf: '/John-Kenneth-Paco-CV.pdf',
   headshot: '/img/headshot.webp',
-  mark: '/brand/mark.webp',
   availability: 'OJT / Cadet Engineer Available',
   school: "St. Peter's College",
 };
@@ -62,12 +61,21 @@ export const thesis = {
   signalFlow: [
     { title: 'Mic / ADC', sub: 'MAX4466 → GP26' },
     { title: 'DMA Buffer', sub: 'RP2040 · FFT → MFE' },
-    { title: 'TinyML', sub: 'int8 CNN · 3 classes', emphasis: true },
+    { title: 'TinyML Classifier', sub: 'int8 CNN · 3 classes', emphasis: true },
     { title: 'LoRa 923 MHz', sub: 'SX1276 · P2P' },
     { title: 'Base Station', sub: 'Pico + laptop (USB)' },
   ],
-  // No measured benchmarks yet (range, current draw). Add them here once field tests are done.
-  benchmarks: [] as { label: string; value: string }[],
+  // Datasheet rows on the thesis card. basis: 'spec' (design choice), 'target' (design goal, not yet
+  // tested), 'measured', or 'pending'. Replace the 'pending' row with real numbers after field testing.
+  metrics: [
+    { label: 'MCU', value: 'RP2040 (Raspberry Pi Pico)', basis: 'spec' },
+    { label: 'Classifier', value: 'int8 CNN · chainsaw / noise / unknown', basis: 'spec' },
+    { label: 'Radio', value: 'SX1276 LoRa P2P · 923 MHz', basis: 'spec' },
+    { label: 'Power', value: '18650 Li-ion · TP4056 USB-C', basis: 'spec' },
+    { label: 'Detection radius', value: '80–150 m per node', basis: 'target' },
+    { label: 'Link range', value: '≤ 1 km', basis: 'target' },
+    { label: 'Measured range / current draw', value: 'Not yet tested', basis: 'pending' },
+  ] as { label: string; value: string; basis: 'spec' | 'target' | 'measured' | 'pending' }[],
   title: 'Acoustic Event Detection for Illegal Logging Prevention',
   subtitle: 'using Spectral Analysis and LoRa Technology',
   status: 'In progress',
@@ -79,12 +87,6 @@ export const thesis = {
     'Led the hardware design, firmware development, and system integration of a battery-powered Raspberry Pi Pico (RP2040) sensor node and LoRa receiver.',
     'Built an on-device audio pipeline (DMA sampling, FFT-based MFE features, int8 CNN from Edge Impulse) that classifies chainsaw, noise, and unknown sounds.',
     'Built a LoRa point-to-point (SX1276, 923 MHz) alert link, designed for a 1 km off-grid range.',
-  ],
-  specs: [
-    { label: 'MCU', value: 'RP2040' },
-    { label: 'Classifier', value: 'int8 CNN · 3 classes' },
-    { label: 'Radio', value: 'LoRa 923 MHz P2P' },
-    { label: 'Link (target)', value: '≤ 1 km' },
   ],
   tags: ['RP2040', 'C++', 'DMA', 'FFT', 'MFE', 'Edge Impulse', 'TinyML', 'LoRa 923 MHz', 'SX1276 · SPI', 'Li-ion power'],
   problem: 'Remote forests often lack cellular coverage, and satellite monitoring detects forest loss only after it happens.',
@@ -190,5 +192,5 @@ export const sections = [
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
-  { id: 'credentials', label: 'Certifications' },
+  { id: 'credentials', label: 'Credentials' },
 ] as const;

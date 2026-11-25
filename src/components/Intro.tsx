@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { profile } from '../data/profile';
+import { Emblem } from './Emblem';
 
 const KEY = 'kp-boot-shown';
 const LINES = [
@@ -9,13 +9,17 @@ const LINES = [
   'TELEMETRY // RP2040_TINYML_LORA [OK]',
 ];
 
-const IntroContext = createContext(true);
+const IntroContext = createContext({ done: true, replay: () => {}, canPlay: false });
 /** True once the boot intro has finished (or was skipped). Entrance animations wait for it. */
-export const useIntroDone = () => useContext(IntroContext);
+export const useIntroDone = () => useContext(IntroContext).done;
+export const useIntro = () => useContext(IntroContext);
+
+const reducedMotion = () =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function shouldPlay(): boolean {
   if (typeof window === 'undefined') return false;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+  if (reducedMotion()) return false;
   try {
     return sessionStorage.getItem(KEY) !== '1';
   } catch {
@@ -46,6 +50,13 @@ export function IntroProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  const replay = useCallback(() => {
+    if (reducedMotion()) return;
+    window.scrollTo({ top: 0 });
+    setWiping(false);
+    setPlaying(true);
+  }, []);
+
   useEffect(() => {
     if (!playing) return;
     const prev = document.body.style.overflow;
@@ -61,7 +72,7 @@ export function IntroProvider({ children }: { children: ReactNode }) {
   }, [playing, finish]);
 
   return (
-    <IntroContext.Provider value={done}>
+    <IntroContext.Provider value={{ done, replay, canPlay: !reducedMotion() }}>
       {children}
       <AnimatePresence>
         {playing && (
@@ -70,7 +81,7 @@ export function IntroProvider({ children }: { children: ReactNode }) {
             role="status"
             aria-label="Loading portfolio"
             onClick={() => finish(true)}
-            className="fixed inset-0 z-[100] flex cursor-pointer items-center justify-center bg-black px-6 print:hidden"
+            className="fixed inset-0 z-[100] flex cursor-pointer items-center justify-center bg-ink px-6 print:hidden"
             initial={{ y: 0 }}
             animate={wiping ? { y: '-100%' } : { y: 0 }}
             transition={{ duration: 0.26, ease: [0.76, 0, 0.24, 1] }}
@@ -82,14 +93,14 @@ export function IntroProvider({ children }: { children: ReactNode }) {
             }}
           >
             <div className="w-full max-w-md">
-              <img src={profile.mark} width={128} height={128} alt="" className="h-16 w-16" />
+              <Emblem className="h-16 w-16" />
               <ul className="mt-6 space-y-1.5 font-mono text-[11px] leading-5 text-fg sm:text-xs">
                 {LINES.map((line, i) => (
                   <motion.li
                     key={line}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.01, delay: 0.12 + i * 0.18 }}
+                    initial={{ opacity: 0, x: -4 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.08, delay: 0.1 + i * 0.17 }}
                   >
                     <span className="text-smoke">&gt; </span>
                     {line}

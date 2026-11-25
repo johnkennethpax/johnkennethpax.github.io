@@ -1,14 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ken Paco | Electrical Engineering Portfolio</title>
     <meta name="description" content="John Kenneth S. Paco: BS Electrical Engineering student and DOLE Safety Officer 2 building embedded and IoT systems, including an RP2040 + LoRa acoustic sensor for illegal logging detection." />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+    <script>
+      // Apply the saved theme before first paint (default: light; system preference is not used).
+      (function () {
+        var t = 'light';
+        try { if (localStorage.getItem('kp-theme') === 'dark') t = 'dark'; } catch (e) {}
+        document.documentElement.setAttribute('data-theme', t);
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', t === 'dark' ? '#000000' : '#ffffff');
+      })();
+    </script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon-16.png" />
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Ken Paco | Electrical Engineering Portfolio" />
@@ -21,8 +30,8 @@
   <body>
     <div id="root"></div>
     <noscript>
-      <p style="color:#fff;background:#000;padding:24px;font-family:sans-serif">
-        This portfolio needs JavaScript. You can still read the <a style="color:#fff" href="/resume/">CV</a>.
+      <p style="padding:24px;font-family:sans-serif">
+        This portfolio needs JavaScript. You can still read the <a href="/resume/">CV</a>.
       </p>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>

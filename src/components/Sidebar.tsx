@@ -1,24 +1,28 @@
 import { motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
-import { Download, Mail } from 'lucide-react';
+import { FileDown, Mail } from 'lucide-react';
 import { profile, sections } from '../data/profile';
 import { TextReveal } from './TextReveal';
 import { GithubIcon, LinkedinIcon } from './BrandIcons';
-import { BrandMark } from './BrandMark';
+import { Emblem } from './Emblem';
+import { ThemeToggle } from './ThemeToggle';
 import { CopyEmail } from './CopyEmail';
 
 const iconBtn =
-  'inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-hairline px-3 text-sm text-ash transition-colors duration-200 hover:border-fg hover:text-fg lg:w-10 lg:px-0';
+  'inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-hairline px-3 text-sm text-ash transition-colors duration-200 hover:border-strong hover:text-fg lg:w-9 lg:px-0';
+const copyBtn =
+  'inline-flex h-10 items-center gap-2 rounded-lg border border-hairline px-3 text-sm text-fg transition-colors duration-200 hover:border-strong hover:bg-raised';
 
 export function DownloadCv({ className = '' }: { className?: string }) {
   return (
-    <a
-      className={`inline-flex h-10 items-center gap-2 rounded-lg border border-fg bg-fg px-4 text-sm font-bold text-ink transition-colors duration-200 hover:bg-ink hover:text-fg ${className}`}
-      href={profile.cvPdf}
-      download
+    <button
+      type="button"
+      onClick={() => window.print()}
+      title="Opens the print dialog; choose Save as PDF"
+      className={`inline-flex h-10 items-center gap-2 rounded-lg border border-fg bg-fg px-3.5 text-sm font-bold text-ink transition-colors duration-200 hover:bg-ink hover:text-fg ${className}`}
     >
-      <Download size={16} aria-hidden="true" /> Download CV <span className="font-mono text-[11px] font-normal opacity-70">(PDF)</span>
-    </a>
+      <FileDown size={16} aria-hidden="true" /> Download CV <span className="font-mono text-[11px] font-normal opacity-70">(PDF)</span>
+    </button>
   );
 }
 
@@ -46,7 +50,6 @@ export function SocialLinks() {
       <a className={iconBtn} href={`mailto:${profile.email}`} title={profile.email} aria-label={`Email ${profile.email}`}>
         <Mail size={16} aria-hidden="true" /> <span className="lg:sr-only">Email</span>
       </a>
-      <CopyEmail email={profile.email} className={iconBtn} />
     </>
   );
 }
@@ -55,9 +58,12 @@ export function Sidebar({ active }: { active: string }) {
   return (
     <header className={`pt-8 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-[42%] lg:flex-col lg:justify-center-safe lg:gap-6 lg:overflow-y-auto lg:py-12 lg:[@media(min-height:1000px)]:py-16 lg:[@media(max-height:880px)]:py-8 print:static print:block print:h-auto print:w-full print:overflow-visible print:py-0`}>
       <div>
-        <a href="#about" className="no-print hidden items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-ash hover:text-fg lg:inline-flex">
-          <BrandMark className="h-7 w-auto" /> Ken Paco <span className="text-smoke">|</span> Electrical Engineering
-        </a>
+        <div className="no-print hidden items-center justify-between gap-3 lg:flex">
+          <a href="#about" className="inline-flex min-w-0 items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ash hover:text-fg">
+            <Emblem className="h-7 w-7 shrink-0" /> <span className="truncate">Ken Paco <span className="text-smoke">|</span> Electrical Engineering</span>
+          </a>
+          <ThemeToggle />
+        </div>
         <img
           src={profile.headshot}
           width={480}
@@ -76,17 +82,15 @@ export function Sidebar({ active }: { active: string }) {
           stagger={0.04}
           className="mt-4 font-mono text-[13px] text-fg"
         />
+        <div className="mt-3">
+          <AvailabilityBadge />
+        </div>
         <p className={`mt-5 max-w-sm leading-relaxed text-ash lg:max-xl:text-sm lg:[@media(max-height:880px)]:mt-3 lg:[@media(max-height:880px)]:text-[15px] lg:max-xl:[@media(max-height:880px)]:text-sm`}>{profile.summary.join(' ')}</p>
 
-        <p className="mt-4 hidden font-mono text-xs print:block">
-          {profile.email} · {profile.linkedinLabel} · {profile.location} · {profile.availability}
-        </p>
         <div className="no-print mt-6 flex flex-wrap items-center gap-2 lg:[@media(max-height:880px)]:mt-4">
           <DownloadCv />
+          <CopyEmail email={profile.email} className={copyBtn} />
           <SocialLinks />
-        </div>
-        <div className="no-print mt-3">
-          <AvailabilityBadge />
         </div>
 
         <nav className={`no-print mt-8 hidden lg:block lg:[@media(min-height:1000px)]:mt-10 lg:[@media(max-height:880px)]:mt-6`} aria-label="Sections">
@@ -141,7 +145,7 @@ export function MobileNav({ active }: { active: string }) {
     >
       <div className="flex items-center">
       <a href="#about" aria-label="Ken Paco, back to top" className="shrink-0 pl-4 pr-1">
-        <BrandMark className="h-7 w-auto" />
+        <Emblem className="h-7 w-7" />
       </a>
       <ul ref={listRef} className="relative flex min-w-0 flex-1 gap-1 overflow-x-auto px-2 [scrollbar-width:none]">
         {sections.map((s) => {
@@ -166,6 +170,7 @@ export function MobileNav({ active }: { active: string }) {
           );
         })}
       </ul>
+      <ThemeToggle className="mr-3" />
       </div>
     </nav>
   );

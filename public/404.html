@@ -1,19 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Page not found | Ken Paco</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png">
+  <script>try{if(localStorage.getItem('kp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
   <style>
-    html,body{margin:0;height:100%;background:#000;color:#fff;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    :root{--bg:#fff;--ink:#09090b;--muted:#71717a;--border:#e4e4e7;--strong:#a1a1aa}
+    [data-theme=dark]{--bg:#000;--ink:#fafafa;--muted:#71717a;--border:#262626;--strong:#52525b}
+    html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
     main{min-height:100%;display:grid;place-items:center;text-align:center;padding:0 16px}
-    p.k{font:12px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase;color:#a3a3a3;margin:0}
+    p.k{font:12px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0}
     h1{font-size:28px;margin:12px 0}
-    a{display:inline-block;margin-top:20px;padding:10px 16px;border:1px solid #262626;border-radius:8px;color:#fff;text-decoration:none;transition:border-color .2s}
-    a:hover{border-color:#fff}
+    a{display:inline-block;margin-top:20px;padding:10px 16px;border:1px solid var(--border);border-radius:8px;color:var(--ink);text-decoration:none;transition:border-color .2s}
+    a:hover{border-color:var(--strong)}
   </style>
 </head>
 <body><main><div><p class="k">Error 404</p><h1>This page doesn't exist.</h1><a href="/">Back to portfolio →</a></div></main></body>

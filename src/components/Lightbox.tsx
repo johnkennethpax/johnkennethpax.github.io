@@ -69,7 +69,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
                 type="button"
                 onClick={close}
                 aria-label="Close image"
-                className="rounded-lg border border-hairline p-2 text-ash transition-colors hover:border-fg hover:text-fg"
+                className="rounded-lg border border-hairline p-2 text-ash transition-colors hover:border-strong hover:text-fg"
               >
                 <X size={18} aria-hidden="true" />
               </button>
@@ -112,7 +112,7 @@ export function ZoomImage({ full, alt, className = '', frameClassName = '', ...i
       <img
         {...img}
         alt={alt}
-        className={`zoom-img w-full grayscale transition-[filter,transform] duration-300 ease-out group-hover/zoom:scale-[1.03] group-hover/zoom:grayscale-0 group-focus-visible/zoom:grayscale-0 ${className}`}
+        className={`mono-img w-full group-hover/zoom:scale-[1.03] ${className}`}
       />
     </button>
   );

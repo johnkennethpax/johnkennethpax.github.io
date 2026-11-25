@@ -67,7 +67,7 @@ function arrow(r: Rand, x1: number, y1: number, x2: number, y2: number) {
   ].join(' ');
 }
 
-const STROKE = { fill: 'none', stroke: '#ffffff', strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+const STROKE = { fill: 'none', strokeWidth: 1.6, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
 
 function Horizontal() {
   const r = prng(7);
@@ -77,25 +77,25 @@ function Horizontal() {
   return (
     <svg viewBox="0 0 1000 260" className="h-auto w-full" role="img" aria-labelledby="pipe-h-title">
       <title id="pipe-h-title">Signal flow: microphone and ADC, RP2040 DMA buffer with FFT and MFE features, TinyML int8 CNN classifier, 923 MHz LoRa point-to-point, base station.</title>
-      <rect width="1000" height="260" rx="14" fill="#0a0a0a" />
+      <rect width="1000" height="260" rx="14" className="fill-surface" />
       {/* group brackets */}
-      <path d={roughLine(r, x0, 58, txEnd, 58, 1.2)} {...STROKE} stroke="#737373" strokeWidth={1.2} strokeDasharray="6 6" />
-      <text x={x0} y={46} className="fill-[#a3a3a3] font-mono text-[12px] tracking-[0.2em]">TRANSMITTER NODE</text>
-      <path d={roughLine(r, xs[4], 58, xs[4] + bw, 58, 1.2)} {...STROKE} stroke="#737373" strokeWidth={1.2} strokeDasharray="6 6" />
-      <text x={xs[4]} y={46} className="fill-[#a3a3a3] font-mono text-[12px] tracking-[0.2em]">RECEIVER</text>
+      <path d={roughLine(r, x0, 58, txEnd, 58, 1.2)} {...STROKE} className="stroke-smoke" strokeWidth={1.2} strokeDasharray="6 6" />
+      <text x={x0} y={46} className="fill-ash font-mono text-[12px] tracking-[0.2em]">TRANSMITTER NODE</text>
+      <path d={roughLine(r, xs[4], 58, xs[4] + bw, 58, 1.2)} {...STROKE} className="stroke-smoke" strokeWidth={1.2} strokeDasharray="6 6" />
+      <text x={xs[4]} y={46} className="fill-ash font-mono text-[12px] tracking-[0.2em]">RECEIVER</text>
       {BLOCKS.map((b, i) => (
         <g key={b.title}>
-          {b.emphasis && <path d={hachure(r, xs[i], y0, bw, bh)} {...STROKE} stroke="#404040" strokeWidth={1.1} />}
-          <path d={roughRect(r, xs[i], y0, bw, bh)} {...STROKE} />
-          <text x={xs[i] + bw / 2} y={y0 + 40} textAnchor="middle" className="fill-white font-sans text-[16px] font-bold">{b.title}</text>
-          <text x={xs[i] + bw / 2} y={y0 + 63} textAnchor="middle" className="fill-[#a3a3a3] font-mono text-[11px]">{b.sub}</text>
+          {b.emphasis && <path d={hachure(r, xs[i], y0, bw, bh)} {...STROKE} className="stroke-strong" strokeWidth={1.1} />}
+          <path d={roughRect(r, xs[i], y0, bw, bh)} {...STROKE} className="stroke-fg" />
+          <text x={xs[i] + bw / 2} y={y0 + 40} textAnchor="middle" className="fill-fg font-sans text-[15px] font-bold">{b.title}</text>
+          <text x={xs[i] + bw / 2} y={y0 + 63} textAnchor="middle" className="fill-ash font-mono text-[11px]">{b.sub}</text>
         </g>
       ))}
       {xs.slice(0, 4).map((x, i) => (
-        <path key={i} d={arrow(r, x + bw + 6, y0 + bh / 2, xs[i + 1] - 6, y0 + bh / 2)} {...STROKE} strokeDasharray={i === 3 ? '7 6' : undefined} />
+        <path key={i} d={arrow(r, x + bw + 6, y0 + bh / 2, xs[i + 1] - 6, y0 + bh / 2)} {...STROKE} className="stroke-fg" strokeDasharray={i === 3 ? '7 6' : undefined} />
       ))}
-      <text x={(xs[3] + bw + xs[4]) / 2} y={y0 + bh + 36} textAnchor="middle" className="fill-[#a3a3a3] font-mono text-[11px]">≤ 1 km (target)</text>
-      <text x={500} y={238} textAnchor="middle" className="fill-[#737373] font-mono text-[11px]">audio in → features → classify → alert over LoRa, no cellular or internet</text>
+      <text x={(xs[3] + bw + xs[4]) / 2} y={y0 + bh + 36} textAnchor="middle" className="fill-ash font-mono text-[11px]">≤ 1 km (target)</text>
+      <text x={500} y={238} textAnchor="middle" className="fill-smoke font-mono text-[11px]">audio in → features → classify → alert over LoRa, no cellular or internet</text>
     </svg>
   );
 }
@@ -107,23 +107,23 @@ function Vertical() {
   return (
     <svg viewBox="0 0 360 640" className="h-auto w-full" role="img" aria-labelledby="pipe-v-title">
       <title id="pipe-v-title">Signal flow: microphone and ADC, RP2040 DMA buffer with FFT and MFE features, TinyML int8 CNN classifier, 923 MHz LoRa point-to-point, base station.</title>
-      <rect width="360" height="640" rx="14" fill="#0a0a0a" />
-      <text x={x0} y={38} className="fill-[#a3a3a3] font-mono text-[11px] tracking-[0.2em]">TRANSMITTER NODE</text>
-      <path d={roughLine(r, 36, y0, 36, ys[3] + bh, 1.2)} {...STROKE} stroke="#737373" strokeWidth={1.2} strokeDasharray="6 6" />
-      <path d={roughLine(r, 36, ys[4], 36, ys[4] + bh, 1.2)} {...STROKE} stroke="#737373" strokeWidth={1.2} strokeDasharray="6 6" />
+      <rect width="360" height="640" rx="14" className="fill-surface" />
+      <text x={x0} y={38} className="fill-ash font-mono text-[11px] tracking-[0.2em]">TRANSMITTER NODE</text>
+      <path d={roughLine(r, 36, y0, 36, ys[3] + bh, 1.2)} {...STROKE} className="stroke-smoke" strokeWidth={1.2} strokeDasharray="6 6" />
+      <path d={roughLine(r, 36, ys[4], 36, ys[4] + bh, 1.2)} {...STROKE} className="stroke-smoke" strokeWidth={1.2} strokeDasharray="6 6" />
       {BLOCKS.map((b, i) => (
         <g key={b.title}>
-          {b.emphasis && <path d={hachure(r, x0, ys[i], bw, bh)} {...STROKE} stroke="#404040" strokeWidth={1.1} />}
-          <path d={roughRect(r, x0, ys[i], bw, bh)} {...STROKE} />
-          <text x={x0 + bw / 2} y={ys[i] + 33} textAnchor="middle" className="fill-white font-sans text-[16px] font-bold">{b.title}</text>
-          <text x={x0 + bw / 2} y={ys[i] + 54} textAnchor="middle" className="fill-[#a3a3a3] font-mono text-[11px]">{b.sub}</text>
+          {b.emphasis && <path d={hachure(r, x0, ys[i], bw, bh)} {...STROKE} className="stroke-strong" strokeWidth={1.1} />}
+          <path d={roughRect(r, x0, ys[i], bw, bh)} {...STROKE} className="stroke-fg" />
+          <text x={x0 + bw / 2} y={ys[i] + 33} textAnchor="middle" className="fill-fg font-sans text-[15px] font-bold">{b.title}</text>
+          <text x={x0 + bw / 2} y={ys[i] + 54} textAnchor="middle" className="fill-ash font-mono text-[11px]">{b.sub}</text>
         </g>
       ))}
       {ys.slice(0, 4).map((y, i) => (
-        <path key={i} d={arrow(r, x0 + bw / 2, y + bh + 5, x0 + bw / 2, ys[i + 1] - 5)} {...STROKE} strokeDasharray={i === 3 ? '7 6' : undefined} />
+        <path key={i} d={arrow(r, x0 + bw / 2, y + bh + 5, x0 + bw / 2, ys[i + 1] - 5)} {...STROKE} className="stroke-fg" strokeDasharray={i === 3 ? '7 6' : undefined} />
       ))}
-      <text x={x0 + bw / 2 + 14} y={(ys[3] + bh + ys[4]) / 2 + 4} className="fill-[#a3a3a3] font-mono text-[11px]">≤ 1 km (target)</text>
-      <text x={x0} y={ys[4] - 10} className="fill-[#a3a3a3] font-mono text-[11px] tracking-[0.2em]">RECEIVER</text>
+      <text x={x0 + bw / 2 + 14} y={(ys[3] + bh + ys[4]) / 2 + 4} className="fill-ash font-mono text-[11px]">≤ 1 km (target)</text>
+      <text x={x0} y={ys[4] - 10} className="fill-ash font-mono text-[11px] tracking-[0.2em]">RECEIVER</text>
     </svg>
   );
 }

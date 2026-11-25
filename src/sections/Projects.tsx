@@ -37,26 +37,27 @@ export function Projects() {
             <p className="mt-1 text-sm text-smoke">{thesis.subtitle}</p>
             <p className="mt-4 leading-relaxed text-ash">{thesis.summary}</p>
 
-            <dl className="mt-6 grid grid-cols-2 gap-3 xl:grid-cols-4">
-              {thesis.specs.map((s) => (
-                <div key={s.label} className="rounded-xl border border-hairline bg-raised p-3">
-                  <dt className="meta">{s.label}</dt>
-                  <dd className="mt-1 font-mono text-[13px] text-fg">{s.value}</dd>
-                </div>
-              ))}
-            </dl>
-            {thesis.benchmarks.length > 0 ? (
-              <dl className="mt-3 grid grid-cols-2 gap-3 xl:grid-cols-4">
-                {thesis.benchmarks.map((b) => (
-                  <div key={b.label} className="rounded-xl border border-fg/60 bg-raised p-3">
-                    <dt className="meta">{b.label} (measured)</dt>
-                    <dd className="mt-1 font-mono text-[13px] text-fg">{b.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            ) : (
-              <p className="meta mt-3">Measured benchmarks (range, current draw) will be added after field testing.</p>
-            )}
+            <div className="mt-6 overflow-hidden rounded-xl border border-hairline">
+              <table className="w-full border-collapse text-left font-mono text-[12px]">
+                <caption className="border-b border-hairline bg-raised px-3 py-2 text-left label">Engineering metrics</caption>
+                <thead className="sr-only">
+                  <tr><th scope="col">Parameter</th><th scope="col">Value</th><th scope="col">Basis</th></tr>
+                </thead>
+                <tbody>
+                  {thesis.metrics.map((m) => (
+                    <tr key={m.label} className="border-b border-hairline last:border-0">
+                      <th scope="row" className="px-3 py-2 font-normal text-smoke">{m.label}</th>
+                      <td className="px-3 py-2 text-fg">{m.value}</td>
+                      <td className="px-3 py-2 text-right">
+                        <span className={`rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wider ${m.basis === 'measured' ? 'border-fg text-fg' : m.basis === 'pending' ? 'border-dashed border-strong text-smoke' : 'border-hairline text-smoke'}`}>
+                          {m.basis}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
             <ul className="mt-6 flex flex-wrap gap-2" aria-label="Technologies">
               {thesis.tags.map((t) => (
@@ -99,7 +100,7 @@ export function Projects() {
                   <H4>Hardware</H4>
                   <div className="mt-3 grid gap-3 sm:grid-cols-2">
                     {thesis.schematics.map((sch) => (
-                      <figure key={sch.src} className="overflow-hidden rounded-xl border border-hairline transition-colors hover:border-fg">
+                      <figure key={sch.src} className="overflow-hidden rounded-xl border border-hairline transition-colors hover:border-strong">
                         <ZoomImage src={sch.src} width={1169} height={827} loading="lazy" alt={sch.alt} className="bg-white" />
                         <figcaption className="px-3 py-2 meta">{sch.caption} schematic · tap to enlarge</figcaption>
                       </figure>
@@ -142,7 +143,7 @@ export function Projects() {
                         height={g.h}
                         loading="lazy"
                         alt={g.alt}
-                        frameClassName={`rounded-xl border border-hairline transition-colors hover:border-fg ${i === 4 ? 'col-span-2 sm:col-span-1' : ''}`}
+                        frameClassName={`rounded-xl border border-hairline transition-colors hover:border-strong ${i === 4 ? 'col-span-2 sm:col-span-1' : ''}`}
                         className={`object-cover ${i === 4 ? 'aspect-[3/2] sm:aspect-[3/4]' : 'aspect-[3/4]'}`}
                       />
                     ))}

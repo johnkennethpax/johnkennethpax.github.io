@@ -1,23 +1,62 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/jetbrains-mono';
 
+/* ---------- Dual-polarity monochrome tokens (light is the default) ---------- */
+:root,
+[data-theme='light'] {
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --surface-hover: #f4f4f5;
+  --ink: #09090b;
+  --ink-secondary: #52525b;
+  --ink-muted: #71717a;
+  --border: #e4e4e7;
+  --border-strong: #a1a1aa;
+  --flame: #09090b;
+  --head: #a1a1aa;
+  --spot: rgba(9, 9, 11, 0.05);
+  --spot-edge: rgba(9, 9, 11, 0.55);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-hover: #111111;
+  --ink: #fafafa;
+  --ink-secondary: #a1a1aa;
+  --ink-muted: #71717a;
+  --border: #262626;
+  --border-strong: #52525b;
+  --flame: #f5eedc;
+  --head: #52525b;
+  --spot: rgba(255, 255, 255, 0.08);
+  --spot-edge: rgba(255, 255, 255, 0.9);
+  color-scheme: dark;
+}
+
+/* Tailwind utilities map onto the tokens, so classes like bg-surface or text-ash follow the theme. */
+@theme inline {
+  --color-ink: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--surface-hover);
+  --color-hairline: var(--border);
+  --color-strong: var(--border-strong);
+  --color-fg: var(--ink);
+  --color-ash: var(--ink-secondary);
+  --color-smoke: var(--ink-muted);
+}
+
 @theme {
-  --color-ink: #000000;
-  --color-surface: #0a0a0a;
-  --color-raised: #111111;
-  --color-hairline: #262626;
-  --color-fg: #ffffff;
-  --color-ash: #a3a3a3;
-  --color-smoke: #737373;
   --font-sans: 'Satoshi', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 @layer base {
-  html { background: var(--color-ink); color-scheme: dark; -webkit-text-size-adjust: 100%; }
-  body { background: var(--color-ink); color: var(--color-fg); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-  ::selection { background: #ffffff; color: #000000; }
-  :focus-visible { outline: 1px solid #ffffff; outline-offset: 3px; border-radius: 4px; }
+  html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  ::selection { background: var(--ink); color: var(--bg); }
+  :focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
   section[id] { scroll-margin-top: 4.5rem; }
   @media (min-width: 1024px) { section[id] { scroll-margin-top: 4rem; } }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
@@ -29,28 +68,30 @@
   .pill {
     @apply inline-flex items-center rounded-full border border-hairline bg-surface px-2.5 py-0.5 font-mono text-[11px] leading-5 text-ash transition-colors duration-200;
   }
-  .pill:hover { @apply border-fg text-fg; }
+  .pill:hover { @apply border-strong text-fg; }
   .label { @apply font-mono text-[11px] uppercase tracking-[0.22em] text-ash; }
   .meta { @apply font-mono text-xs text-smoke; }
   .card { @apply rounded-2xl border border-hairline bg-surface transition-colors duration-300; }
-  .card-hover:hover { @apply border-fg; }
+  .card-hover:hover { @apply border-strong bg-raised; }
   .dash-list > li { @apply relative pl-5; }
   .dash-list > li::before { content: ''; @apply absolute left-0 top-[0.72em] h-px w-2.5 bg-smoke; }
+  /* Project visuals: desaturated until hovered or focused. */
+  .mono-img { filter: grayscale(1) contrast(1.05); transition: filter 300ms ease, transform 300ms ease-out; }
+  .group\/zoom:hover .mono-img,
+  .group\/zoom:focus-visible .mono-img { filter: none; }
 }
 
-/* Spotlight card: radial light + border beam that follow the pointer (CSS vars set in JS, no re-render). */
+/* Spotlight card: soft radial light + border beam that follow the pointer (CSS vars set in JS). */
 .spotlight-card { --mx: 50%; --my: 0%; }
 .spotlight-card .spot-light,
 .spotlight-card .spot-border {
   pointer-events: none; position: absolute; inset: 0; border-radius: inherit; opacity: 0;
   transition: opacity 300ms ease;
 }
-.spotlight-card .spot-light {
-  background: radial-gradient(520px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.08), transparent 45%);
-}
+.spotlight-card .spot-light { background: radial-gradient(520px circle at var(--mx) var(--my), var(--spot), transparent 45%); }
 .spotlight-card .spot-border {
   padding: 1px;
-  background: radial-gradient(320px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.95), transparent 55%);
+  background: radial-gradient(320px circle at var(--mx) var(--my), var(--spot-edge), transparent 55%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
@@ -63,34 +104,19 @@
   .spotlight-card .spot-light, .spotlight-card .spot-border { display: none; }
 }
 
-/* Ctrl+P: printable portfolio in black on white. Motion styles are neutralised so nothing prints hidden. */
-@media print {
-  .no-print { display: none !important; }
-  html, body { background: #ffffff !important; color: #000000 !important; }
-  body * { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; box-shadow: none !important; backdrop-filter: none !important; }
-  #root .text-fg, #root h1, #root h2, #root h3, #root h4, #root dd, #root strong { color: #000000 !important; }
-  #root .text-ash, #root .text-smoke, #root .meta, #root .label { color: #404040 !important; }
-  #root .card, #root .bg-surface, #root .bg-raised, #root .pill, #root .spotlight-card { background: transparent !important; border-color: #d4d4d4 !important; }
-  #root .border-hairline { border-color: #d4d4d4 !important; }
-  #root .pill { color: #262626 !important; }
-  #root .spot-light, #root .spot-border { display: none !important; }
-  #root svg rect[fill='#0a0a0a'] { fill: #ffffff; }
-  #root svg path[stroke='#ffffff'] { stroke: #000000; }
-  #root svg text.fill-white { fill: #000000; }
-  #root a[href^='http']::after { content: ' (' attr(href) ')'; font-size: 9pt; color: #404040; }
-  #root .card:not(.spotlight-card), #root figure, #root li { break-inside: avoid; }
-  #root h2, #root h3, #root h4 { break-after: avoid; }
-  #root section[id] { padding-top: 1.5rem !important; }
-  #root details > summary { display: none; }
-}
-
-/* CV page: print / PDF in black on white. */
+/* ---------- Print: white paper, black ink, no UI chrome ---------- */
 @page { size: A4; margin: 14mm; }
 @media print {
+  :root, [data-theme='light'], [data-theme='dark'] {
+    --bg: #ffffff; --surface: #ffffff; --surface-hover: #ffffff;
+    --ink: #000000; --ink-secondary: #262626; --ink-muted: #404040;
+    --border: #d4d4d4; --border-strong: #d4d4d4; --flame: #000000; --head: #737373;
+    color-scheme: light;
+  }
   html, body { background: #ffffff !important; color: #000000 !important; }
-  .cv, .cv * { color: #000000 !important; background: transparent !important; }
-  .cv .meta, .cv .text-ash, .cv .text-smoke { color: #404040 !important; }
+  .no-print { display: none !important; }
+  body * { animation: none !important; box-shadow: none !important; backdrop-filter: none !important; }
   .cv a { text-decoration: none; }
   .cv section { break-inside: avoid-page; }
-  .cv .dash-list > li::before { background: #000000 !important; }
+  .cv li { break-inside: avoid; }
 }
