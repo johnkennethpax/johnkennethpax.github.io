@@ -40,7 +40,7 @@ export function Sidebar({ active }: { active: string }) {
           width={480}
           height={480}
           alt={`Portrait of ${profile.name}`}
-          className="img-mono h-28 w-28 rounded-full border border-hairline object-cover lg:[@media(max-height:820px)]:h-20 lg:[@media(max-height:820px)]:w-20"
+          className="h-28 w-28 rounded-full border border-hairline object-cover lg:[@media(max-height:820px)]:h-20 lg:[@media(max-height:820px)]:w-20"
         />
         <TextReveal
           as="h1"
