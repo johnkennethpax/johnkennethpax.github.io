@@ -16,8 +16,11 @@ All text lives in [`src/data/profile.ts`](src/data/profile.ts). The portfolio (`
 ```sh
 npm install
 npm run dev       # local preview at http://localhost:5173
-npm run build     # type-check and build to dist/
+npm run build     # type-check, build, then pre-render both pages to static HTML in dist/
 ```
+
+`npm run build` renders the React app to HTML (`src/entry-server.tsx` + `scripts/prerender.mjs`), so the
+deployed pages contain real content for crawlers and slow connections; the browser then hydrates it.
 
 After changing CV content, regenerate the downloadable PDF (needs Playwright with Chromium) and commit it:
 
@@ -30,3 +33,4 @@ npm run build && npm run cv:pdf   # writes public/John-Kenneth-Paco-CV.pdf
 - `src/sections/`: About, Projects, Experience, Skills, Credentials
 - `src/components/`: sidebar and nav, spotlight card, blur-fade and text reveals, pipeline diagram
 - `public/img/`: photos and schematics; `public/404.html`: not-found page
+- `public/og-image.png`, `robots.txt`, `sitemap.xml`: sharing and SEO; JSON-LD `Person` data lives in `index.html`

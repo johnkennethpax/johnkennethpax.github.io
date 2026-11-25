@@ -15,6 +15,13 @@ export function EntryCard({ entry }: { entry: Entry }) {
         {entry.dates && <span className="meta">{entry.dates}</span>}
       </div>
       {entry.org && <p className="mt-1 text-sm text-ash">{entry.org}</p>}
+      {entry.highlights && (
+        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Highlights">
+          {entry.highlights.map((h) => (
+            <li key={h} className="callout">{h}</li>
+          ))}
+        </ul>
+      )}
       {entry.bullets && (
         <ul className="dash-list mt-4 space-y-2 text-[15px] leading-relaxed text-ash">
           {entry.bullets.map((b) => (

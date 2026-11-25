@@ -1,4 +1,4 @@
-import { about, academicWork, education } from '../data/profile';
+import { about, education } from '../data/profile';
 import { BlurFade } from '../components/BlurFade';
 import { EntryCard } from '../components/EntryCard';
 import { Section } from '../components/Section';
@@ -25,16 +25,6 @@ export function About() {
             <EntryCard entry={e} />
           </BlurFade>
         ))}
-        <BlurFade as="li" delay={0.1}>
-          <div className="card card-hover p-6">
-            <h4 className="font-bold text-fg">Academic work</h4>
-            <ul className="dash-list mt-3 space-y-2 text-[15px] leading-relaxed text-ash">
-              {academicWork.map((a) => (
-                <li key={a}>{a}</li>
-              ))}
-            </ul>
-          </div>
-        </BlurFade>
       </ul>
     </Section>
   );

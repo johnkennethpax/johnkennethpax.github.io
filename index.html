@@ -7,33 +7,100 @@
     <meta name="description" content="John Kenneth S. Paco: BS Electrical Engineering student and DOLE Safety Officer 2 building embedded and IoT systems, including an RP2040 + LoRa acoustic sensor for illegal logging detection." />
     <meta name="theme-color" content="#ffffff" />
     <script>
-      // Apply the saved theme before first paint (default: light; system preference is not used).
+      // Before first paint: saved theme, else the OS preference. Also cover the pre-rendered page
+      // while the once-per-session boot intro is about to mount (removed by React, or after 4s).
       (function () {
-        var t = 'light';
-        try { if (localStorage.getItem('kp-theme') === 'dark') t = 'dark'; } catch (e) {}
-        document.documentElement.setAttribute('data-theme', t);
+        var d = document.documentElement, t = null;
+        try { t = localStorage.getItem('kp-theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        d.setAttribute('data-theme', t);
         var m = document.querySelector('meta[name="theme-color"]');
-        if (m) m.setAttribute('content', t === 'dark' ? '#000000' : '#ffffff');
+        if (m) m.setAttribute('content', t === 'dark' ? '#050505' : '#ffffff');
+        var boot = false;
+        try {
+          boot = sessionStorage.getItem('kp-boot-shown') !== '1' &&
+            !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+        } catch (e) {}
+        if (boot) {
+          d.classList.add('kp-boot');
+          setTimeout(function () { d.classList.remove('kp-boot'); }, 4000);
+        }
       })();
     </script>
+    <style>html.kp-boot body { visibility: hidden; } html[data-theme='dark'] { background: #050505; }</style>
+    <link rel="canonical" href="https://johnkennethpax.github.io/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ken Paco" />
     <meta property="og:title" content="Ken Paco | Electrical Engineering Portfolio" />
-    <meta property="og:description" content="Embedded systems, IoT and signal processing projects by John Kenneth S. Paco." />
+    <meta property="og:description" content="Embedded systems, IoT and power engineering work by John Kenneth S. Paco, BS Electrical Engineering student and DOLE Safety Officer 2." />
     <meta property="og:url" content="https://johnkennethpax.github.io/" />
-    <meta property="og:image" content="https://johnkennethpax.github.io/img/headshot.jpg" />
+    <meta property="og:image" content="https://johnkennethpax.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ken Paco, Electrical Engineering portfolio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ken Paco | Electrical Engineering Portfolio" />
+    <meta name="twitter:description" content="Embedded systems, IoT and power engineering work by John Kenneth S. Paco." />
+    <meta name="twitter:image" content="https://johnkennethpax.github.io/og-image.png" />
+    <meta name="twitter:image:alt" content="Ken Paco, Electrical Engineering portfolio" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "John Kenneth S. Paco",
+        "alternateName": "Ken Paco",
+        "url": "https://johnkennethpax.github.io/",
+        "image": "https://johnkennethpax.github.io/img/headshot.jpg",
+        "jobTitle": "Electrical Engineering Student",
+        "description": "BS Electrical Engineering student and DOLE Safety Officer 2 building embedded and IoT systems.",
+        "email": "mailto:johnkennethpax@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Iligan City", "addressCountry": "PH" },
+        "affiliation": { "@type": "CollegeOrUniversity", "name": "St. Peter's College, Iligan City" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Mindanao State University – Iligan Institute of Technology" },
+        "sameAs": ["https://github.com/johnkennethpax", "https://www.linkedin.com/in/johnkennethpaco/"],
+        "knowsAbout": [
+          "Electrical Engineering", "Embedded Systems", "Raspberry Pi Pico (RP2040)", "Arduino", "C++",
+          "TinyML", "Edge Impulse", "Fast Fourier Transform (FFT)", "LoRa", "I2C", "SPI", "UART",
+          "Sensor Interfacing", "Power Systems", "Occupational Safety and Health", "Python", "QGIS"
+        ],
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "40-Hour COSH Training with 2-Hour Training of Trainers (Safety Officer 2)",
+            "credentialCategory": "certificate",
+            "recognizedBy": { "@type": "Organization", "name": "Serendipity MPC (DOLE-Accredited)" }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Procore Construction Management Professional Certificate",
+            "credentialCategory": "certificate",
+            "recognizedBy": { "@type": "Organization", "name": "Procore Technologies" }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Become an Arduino Developer Learning Path",
+            "credentialCategory": "certificate",
+            "recognizedBy": { "@type": "Organization", "name": "LinkedIn Learning" }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Excel for Engineering Professionals",
+            "credentialCategory": "certificate",
+            "recognizedBy": { "@type": "Organization", "name": "LinkedIn Learning" }
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" />
   </head>
   <body>
     <div id="root"></div>
-    <noscript>
-      <p style="padding:24px;font-family:sans-serif">
-        This portfolio needs JavaScript. You can still read the <a href="/resume/">CV</a>.
-      </p>
-    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -7,10 +7,10 @@
   <title>Page not found | Ken Paco</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <script>try{if(localStorage.getItem('kp-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+  <script>(function(){var t=null;try{t=localStorage.getItem('kp-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script>
   <style>
     :root{--bg:#fff;--ink:#09090b;--muted:#71717a;--border:#e4e4e7;--strong:#a1a1aa}
-    [data-theme=dark]{--bg:#000;--ink:#fafafa;--muted:#71717a;--border:#262626;--strong:#52525b}
+    [data-theme=dark]{--bg:#050505;--ink:#fafafa;--muted:#71717a;--border:#262626;--strong:#52525b}
     html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
     main{min-height:100%;display:grid;place-items:center;text-align:center;padding:0 16px}
     p.k{font:12px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0}

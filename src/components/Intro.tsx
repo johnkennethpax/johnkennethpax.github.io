@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
+import { useIsoLayoutEffect } from '../lib/useIsoLayoutEffect';
 import { AnimatePresence, motion } from 'motion/react';
 import { Emblem } from './Emblem';
 
@@ -32,9 +33,19 @@ function shouldPlay(): boolean {
  * Plays once per browser session, skips on click or Escape, and never runs with reduced motion.
  */
 export function IntroProvider({ children }: { children: ReactNode }) {
-  const [playing, setPlaying] = useState(shouldPlay);
+  // Pre-rendered HTML never contains the overlay, so the first render must not either (hydration).
+  // The <head> script hides the page (html.kp-boot) until this effect mounts the overlay before paint.
+  const [willPlay] = useState(shouldPlay);
+  const [playing, setPlaying] = useState(false);
   const [wiping, setWiping] = useState(false);
-  const [done, setDone] = useState(!playing);
+  const [done, setDone] = useState(!willPlay);
+  const [canPlay, setCanPlay] = useState(false);
+
+  useIsoLayoutEffect(() => {
+    if (willPlay) setPlaying(true);
+    setCanPlay(!reducedMotion());
+    document.documentElement.classList.remove('kp-boot');
+  }, [willPlay]);
 
   const finish = useCallback((instant: boolean) => {
     try {
@@ -54,6 +65,7 @@ export function IntroProvider({ children }: { children: ReactNode }) {
     if (reducedMotion()) return;
     window.scrollTo({ top: 0 });
     setWiping(false);
+    setDone(false);
     setPlaying(true);
   }, []);
 
@@ -72,7 +84,7 @@ export function IntroProvider({ children }: { children: ReactNode }) {
   }, [playing, finish]);
 
   return (
-    <IntroContext.Provider value={{ done, replay, canPlay: !reducedMotion() }}>
+    <IntroContext.Provider value={{ done, replay, canPlay }}>
       {children}
       <AnimatePresence>
         {playing && (

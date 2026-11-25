@@ -18,10 +18,10 @@ export function DownloadCv({ className = '' }: { className?: string }) {
     <button
       type="button"
       onClick={() => window.print()}
-      title="Opens the print dialog; choose Save as PDF"
+      title="Opens the print dialog with the A4 CV; choose Save as PDF"
       className={`inline-flex h-10 items-center gap-2 rounded-lg border border-fg bg-fg px-3.5 text-sm font-bold text-ink transition-colors duration-200 hover:bg-ink hover:text-fg ${className}`}
     >
-      <FileDown size={16} aria-hidden="true" /> Download CV <span className="font-mono text-[11px] font-normal opacity-70">(PDF)</span>
+      <FileDown size={16} aria-hidden="true" /> Print / Save A4 PDF
     </button>
   );
 }
@@ -30,8 +30,8 @@ export function AvailabilityBadge() {
   return (
     <span className="inline-flex items-center gap-2 rounded-full border border-hairline px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-fg">
       <span className="relative flex h-2 w-2" aria-hidden="true">
-        <span className="absolute inline-flex h-full w-full rounded-full bg-fg opacity-60 motion-safe:animate-ping" />
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-fg" />
+        <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 motion-safe:animate-ping" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
       </span>
       {profile.availability}
     </span>
@@ -66,6 +66,7 @@ export function Sidebar({ active }: { active: string }) {
         </div>
         <img
           src={profile.headshot}
+          decoding="async"
           width={480}
           height={480}
           alt={`Portrait of ${profile.name}`}

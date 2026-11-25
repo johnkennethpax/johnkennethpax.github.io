@@ -14,15 +14,16 @@
   --border-strong: #a1a1aa;
   --flame: #09090b;
   --head: #a1a1aa;
+  --accent: #d97706;
   --spot: rgba(9, 9, 11, 0.05);
   --spot-edge: rgba(9, 9, 11, 0.55);
   color-scheme: light;
 }
 
 [data-theme='dark'] {
-  --bg: #000000;
-  --surface: #0a0a0a;
-  --surface-hover: #111111;
+  --bg: #050505;
+  --surface: #0c0c0e;
+  --surface-hover: #131316;
   --ink: #fafafa;
   --ink-secondary: #a1a1aa;
   --ink-muted: #71717a;
@@ -30,6 +31,7 @@
   --border-strong: #52525b;
   --flame: #f5eedc;
   --head: #52525b;
+  --accent: #f59e0b;
   --spot: rgba(255, 255, 255, 0.08);
   --spot-edge: rgba(255, 255, 255, 0.9);
   color-scheme: dark;
@@ -45,6 +47,7 @@
   --color-fg: var(--ink);
   --color-ash: var(--ink-secondary);
   --color-smoke: var(--ink-muted);
+  --color-accent: var(--accent);
 }
 
 @theme {
@@ -56,7 +59,14 @@
   html { background: var(--bg); -webkit-text-size-adjust: 100%; }
   body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   ::selection { background: var(--ink); color: var(--bg); }
-  :focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* Slim, theme-matched scrollbars (page, sticky sidebar, mobile nav). */
+  * { scrollbar-width: thin; scrollbar-color: var(--border-strong) transparent; outline-color: var(--accent); }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 9999px; border: 2px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--ink-muted); }
   section[id] { scroll-margin-top: 4.5rem; }
   @media (min-width: 1024px) { section[id] { scroll-margin-top: 4rem; } }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
@@ -75,10 +85,10 @@
   .card-hover:hover { @apply border-strong bg-raised; }
   .dash-list > li { @apply relative pl-5; }
   .dash-list > li::before { content: ''; @apply absolute left-0 top-[0.72em] h-px w-2.5 bg-smoke; }
-  /* Project visuals: desaturated until hovered or focused. */
-  .mono-img { filter: grayscale(1) contrast(1.05); transition: filter 300ms ease, transform 300ms ease-out; }
-  .group\/zoom:hover .mono-img,
-  .group\/zoom:focus-visible .mono-img { filter: none; }
+  /* Project visuals keep their true colors; only a slight zoom on hover. */
+  .zoom-img { transition: transform 300ms ease-out; }
+  /* High-contrast metric callout. */
+  .callout { @apply inline-flex items-center rounded-md bg-fg px-2 py-1 font-mono text-[11px] font-medium leading-4 text-ink; }
 }
 
 /* Spotlight card: soft radial light + border beam that follow the pointer (CSS vars set in JS). */
@@ -110,7 +120,7 @@
   :root, [data-theme='light'], [data-theme='dark'] {
     --bg: #ffffff; --surface: #ffffff; --surface-hover: #ffffff;
     --ink: #000000; --ink-secondary: #262626; --ink-muted: #404040;
-    --border: #d4d4d4; --border-strong: #d4d4d4; --flame: #000000; --head: #737373;
+    --border: #d4d4d4; --border-strong: #d4d4d4; --flame: #000000; --head: #737373; --accent: #000000;
     color-scheme: light;
   }
   html, body { background: #ffffff !important; color: #000000 !important; }
@@ -120,3 +130,7 @@
   .cv section { break-inside: avoid-page; }
   .cv li { break-inside: avoid; }
 }
+
+/* Theme toggle pressed state follows the <html data-theme> attribute (correct before hydration). */
+[data-theme='light'] .theme-option[data-theme-option='light'],
+[data-theme='dark'] .theme-option[data-theme-option='dark'] { background: var(--ink); color: var(--bg); }

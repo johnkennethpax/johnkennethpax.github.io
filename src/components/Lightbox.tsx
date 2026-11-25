@@ -13,6 +13,7 @@ const LightboxContext = createContext<(shot: Shot) => void>(() => {});
 export function LightboxProvider({ children }: { children: ReactNode }) {
   const [shot, setShot] = useState<Shot | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
 
   const open = useCallback((s: Shot) => {
@@ -26,7 +27,28 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
       returnFocus.current?.focus();
       return;
     }
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && close();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        close();
+        return;
+      }
+      // Trap Tab / Shift+Tab inside the dialog.
+      if (e.key !== 'Tab' || !dialogRef.current) return;
+      const items = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+      );
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const inside = dialogRef.current.contains(document.activeElement);
+      if (e.shiftKey && (document.activeElement === first || !inside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
     document.addEventListener('keydown', onKey);
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -44,6 +66,7 @@ export function LightboxProvider({ children }: { children: ReactNode }) {
         {shot && (
           <motion.div
             key="lightbox"
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-label={shot.alt}
@@ -112,7 +135,8 @@ export function ZoomImage({ full, alt, className = '', frameClassName = '', ...i
       <img
         {...img}
         alt={alt}
-        className={`mono-img w-full group-hover/zoom:scale-[1.03] ${className}`}
+        decoding="async"
+        className={`zoom-img w-full group-hover/zoom:scale-[1.03] ${className}`}
       />
     </button>
   );

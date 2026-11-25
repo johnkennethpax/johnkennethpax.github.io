@@ -6,8 +6,17 @@ export interface Entry {
   org?: string;
   dates?: string;
   badge?: string;
+  /** High-contrast metric callouts shown above the bullets. Only verified figures. */
+  highlights?: string[];
   bullets?: string[];
 }
+
+export type Track = 'embedded' | 'power';
+export const tracks: { id: 'all' | Track; label: string }[] = [
+  { id: 'all', label: 'All' },
+  { id: 'embedded', label: 'Embedded & Edge AI' },
+  { id: 'power', label: 'Power Systems & Safety' },
+];
 
 export interface SkillGroup {
   label: string;
@@ -49,13 +58,51 @@ export const education: Entry[] = [
   { title: 'Electronics Engineering (Transferred)', org: 'Mindanao State University – Iligan Institute of Technology', dates: '2022 – 2024' },
 ];
 
-export const academicWork: string[] = [
-  'IEEE-format report on distributed generation (Electrical Power Systems Quality)',
-  'PowerWorld Simulator experiments (Power Systems Analysis Lab)',
-  'Group report on the schematic arrangement of a diesel power station',
+// Power-systems coursework shown as compact project cards (Power Systems & Safety track).
+export const coursework: { title: string; course: string; detail: string; tags: string[] }[] = [
+  {
+    title: 'Distributed Generation Report',
+    course: 'Electrical Power Systems Quality',
+    detail: 'IEEE-format technical report on distributed generation.',
+    tags: ['Power quality', 'Distributed generation', 'IEEE format'],
+  },
+  {
+    title: 'PowerWorld Simulator Experiments',
+    course: 'Power Systems Analysis Lab',
+    detail: 'Power system analysis exercises carried out in PowerWorld Simulator.',
+    tags: ['PowerWorld', 'Power systems analysis'],
+  },
+  {
+    title: 'Diesel Power Station Schematic Arrangement',
+    course: 'Group report',
+    detail: 'Group report on the schematic arrangement of a diesel power station.',
+    tags: ['Power generation', 'Plant layout'],
+  },
 ];
 
 export const thesis = {
+  track: 'embedded' as Track,
+  // High-contrast callouts on the card. Verified design facts only (no unmeasured performance numbers).
+  callouts: ['923 MHz LoRa P2P', 'int8 CNN · 3 classes', 'DMA audio sampling', '18650 off-grid power'],
+  // System-level reasoning behind the design. Performance has not been measured yet.
+  decisions: [
+    {
+      title: 'Classify on the node, send only the result',
+      text: 'LoRa carries small, low-rate payloads, so streaming raw audio is not practical. Running the int8 CNN on the RP2040 means the radio only transmits a short alert.',
+    },
+    {
+      title: 'LoRa point-to-point instead of LoRaWAN',
+      text: 'P2P needs no gateway, network server, or internet at the site. A second Pico with an SX1276 acts as the base station and connects to a laptop over USB.',
+    },
+    {
+      title: 'DMA for audio capture',
+      text: 'The ADC fills the sample buffer through DMA without CPU involvement, leaving the core free to compute FFT/MFE features and run inference.',
+    },
+    {
+      title: 'Battery-first power path',
+      text: 'An 18650 cell charged by a TP4056 feeds VSYS through a 1N4007 diode, with the Pico\'s 3.3 V rail supplying the microphone and radio. Current draw and runtime are still to be measured.',
+    },
+  ],
   systemName: 'RP2040 + LoRa Acoustic Telemetry System',
   // Signal flow shown in the pipeline diagram. The mic is a GY-MAX4466 electret module (not MEMS).
   signalFlow: [
@@ -134,6 +181,7 @@ export const experience: Entry[] = [
   { title: 'On-the-Job Trainee', badge: 'Upcoming', dates: 'Dec 2026 – Jan 2027' },
   {
     title: 'Vice President – External and Technical',
+    highlights: ['200+ EE students reached', 'Review center partnership'],
     org: "IIEE-CSC SPC Chapter, St. Peter's College",
     dates: 'AY 2025 – 2027',
     bullets: [
@@ -145,6 +193,7 @@ export const experience: Entry[] = [
   },
   {
     title: 'SK Councilor and Budget Monitoring Officer',
+    highlights: ['≈ PHP 1.2M budget monitored', '≈ 600 youth constituents'],
     org: 'Barangay Acmac, Iligan City',
     dates: 'Oct 2023 – Present',
     bullets: [

@@ -1,22 +1,32 @@
-import { motion, useReducedMotion } from 'motion/react';
+import { useState } from 'react';
+import { motion } from 'motion/react';
 import { useIntroDone } from './Intro';
+import { useIsoLayoutEffect } from '../lib/useIsoLayoutEffect';
 
 interface TextRevealProps {
   text: string;
   className?: string;
   as?: 'h1' | 'p';
-  /** Seconds before the first word starts. */
+  /** Seconds before the first word starts (after the boot intro). */
   delay?: number;
   /** Seconds between words. */
   stagger?: number;
 }
 
-/** Word-by-word blur/rise reveal, played once on initial load. */
+/**
+ * Word-by-word blur/rise reveal. It plays when the boot intro hands over (first visit in a session);
+ * otherwise the pre-rendered text is shown as-is so the hero never blinks.
+ */
 export function TextReveal({ text, className, as = 'p', delay = 0, stagger = 0.07 }: TextRevealProps) {
-  const reduce = useReducedMotion();
   const introDone = useIntroDone();
+  const [animated, setAnimated] = useState(false);
   const Tag = as;
-  if (reduce) return <Tag className={className}>{text}</Tag>;
+
+  useIsoLayoutEffect(() => {
+    if (!introDone && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) setAnimated(true);
+  }, []);
+
+  if (!animated) return <Tag className={className}>{text}</Tag>;
   const words = text.split(' ');
   return (
     <Tag className={className} aria-label={text}>
