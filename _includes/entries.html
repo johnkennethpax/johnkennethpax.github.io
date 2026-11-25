@@ -3,7 +3,7 @@
   {% for e in include.items %}
   <li class="entry-card">
     <div class="entry-head">
-      <span class="entry-title">{{ e.title }}</span>
+      <span class="entry-title">{% if e.url %}<a href="{{ e.url }}">{{ e.title }}</a>{% else %}{{ e.title }}{% endif %}</span>
       {% if e.dates %}<span class="entry-dates">{{ e.dates }}</span>{% endif %}
     </div>
     {% if e.org %}<div class="entry-org">{{ e.org }}</div>{% endif %}

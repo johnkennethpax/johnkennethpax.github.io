@@ -15,8 +15,8 @@ skills:
 main-image: /nodes-side-by-side.jpg
 ---
 
-**Team:** Paco, Cabatino, Dador  
-**My role:** Hardware and firmware development  
+**Team:** Paco (thesis lead), Cabatino, Dador  
+**My role:** I led the project and handled the hardware design, firmware development, and system integration.  
 **Status:** Working prototype. PCB, antenna upgrades, enclosures and field testing are ahead.
 
 ## Problem

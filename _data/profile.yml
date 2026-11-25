@@ -1,33 +1,42 @@
-# Content for the Leadership, Education, and Certifications & Awards sections.
-# Source: ken-portfolio-brief.md. Items still marked [CONFIRM] in the brief are left out on purpose.
+# Content for the Leadership, Education, Certifications & Awards sections and the /resume/ page.
+# Sources: Resume_JohnKennethPaco.pdf (leadership, certifications, awards, education) and
+# ken-portfolio-brief.md (academic work, extra SK item). Unconfirmed items are left out on purpose.
 
 leadership:
-  - title: VP-External
-    org: IIEE-CSC St. Peter's College Chapter
-    dates: AY 2026–2027
-  - title: VP-Technical
-    org: IIEE-CSC St. Peter's College Chapter
-    dates: AY 2025–2026
+  - title: Vice President – External and Technical
+    org: IIEE-CSC SPC Chapter, St. Peter's College
+    dates: AY 2025 – 2027
     bullets:
-      - Reached roughly 200+ EE students through technical workshops and external partnerships.
-      - Coordinated with Macapagal Review and Training Center for an orientation at the department general assembly.
-      - Managed the chapter's social media page, event publicity materials and tarpaulins.
-      - Designed the chapter's new logo.
+      - Secured a partnership with Macapagal Review and Training Center, coordinating a review program orientation for 200+ EE students during the department general assembly.
+      - Organized hardware interfacing workshops for 200+ student participants, managing logistics and event execution.
+      - Led the chapter's publicity and social media operations, producing pubmats and tarpaulins for every chapter event.
+      - Designed the chapter's new logo, establishing a consistent visual identity across its publications.
   - title: SK Councilor and Budget Monitoring Officer
-    org: Sangguniang Kabataan, Barangay Acmac, Iligan City
+    org: Barangay Acmac, Iligan City
+    dates: Oct 2023 – Present
     bullets:
-      - Monitored a budget of about PHP 1.2 million serving around 600 youth constituents.
-      - Initiated a job fair forum under the Committee on Economic Empowerment.
-      - "SK programs included student financial assistance, study kits and food for MSU SASE takers, and fiesta sports activities."
+      - Monitored approximately PHP 1,200,000 in youth council funds and program expenditures serving around 600 youth constituents.
+      - Initiated a job fair forum under the Committee on Economic Empowerment to connect local youth with employment opportunities.
+      - Implemented youth programs, including financial assistance for selected high school and college students, study kits and meals for MSU-SASE takers, and fiesta sports activities.
       - "Organized the SK Pasiklaban Dota 2 Tournament (August 2026): 6 teams, double elimination."
 
+projects:
+  - title: Acoustic Event Detection for Illegal Logging Prevention
+    org: Undergraduate Thesis (thesis lead)
+    dates: In Progress
+    url: /projects/acoustic-logging-detection/index/
+    bullets:
+      - Led the hardware design, firmware development, and system integration of a battery-powered Raspberry Pi Pico (RP2040) sensor node and LoRa receiver.
+      - Built an on-device audio pipeline (DMA sampling, FFT-based MFE features, int8 CNN from Edge Impulse) that classifies chainsaw, noise, and unknown sounds.
+      - Built a LoRa point-to-point (SX1276, 923 MHz) alert link, designed for a 1 km off-grid range.
+
 education:
-  - title: BS Electrical Engineering
+  - title: Bachelor of Science in Electrical Engineering
     org: St. Peter's College, Iligan City
-    dates: Expected 2027
-  - title: Electronics Engineering (transferred)
+    dates: 2024 – Expected 2027
+  - title: Electronics Engineering (Transferred)
     org: Mindanao State University – Iligan Institute of Technology
-    dates: 2022–2024
+    dates: 2022 – 2024
 
 academic:
   - IEEE-format report on distributed generation (Electrical Power Systems Quality)
@@ -35,15 +44,35 @@ academic:
   - Group report on the schematic arrangement of a diesel power station
 
 certifications:
-  - title: COSH Safety Officer 2 (SO2)
-    org: 40-hour, DOLE-accredited, Serendipity MPC
-    dates: October 2026
-  - title: Become an Arduino Developer
+  - title: 40-Hour COSH Training with 2-Hour Training of Trainers (Safety Officer 2)
+    org: Serendipity MPC (DOLE-Accredited)
+    dates: Oct 2026
+  - title: Procore Construction Management Professional Certificate
+    org: Procore Technologies
+    dates: Feb 2026
+  - title: Become an Arduino Developer Learning Path
     org: LinkedIn Learning
-    dates: February 2026
+    dates: Feb 2026
+  - title: Excel for Engineering Professionals
+    org: LinkedIn Learning
+    dates: Jan 2026
 
 awards:
-  - title: 3rd Place, 24th Regional Math Wizard
-    dates: October 2025
   - title: Quizzer, 39th Regional Quiz Show
-    dates: October 2026
+    org: 21st RSCON
+    dates: Oct 2026
+  - title: Second Runner-up, 24th Regional Math Wizard
+    org: 20th RSCON
+    dates: Oct 2025
+
+resume_skills:
+  - label: Electrical and Hardware
+    items: Circuit Assembly, Wiring, Sensor Interfacing, Troubleshooting
+  - label: Embedded Systems
+    items: Arduino, Raspberry Pi Pico (RP2040), I2C, SPI, UART, C++, Fast Fourier Transform (FFT)
+  - label: Signal Processing and ML
+    items: DMA sampling, Edge Impulse, TinyML
+  - label: Software and Tools
+    items: Python, Git, QGIS, LaTeX, Microsoft Excel, Microsoft Word
+  - label: Safety
+    items: Construction Occupational Safety and Health (COSH) SO2

@@ -1,0 +1,47 @@
+---
+layout: wrapper
+permalink: /resume/
+title: Resume
+---
+{% assign p = site.data.profile %}
+<div class="resume-page">
+  <header class="resume-header">
+    <h1>{{ site.name }}, SO2</h1>
+    <p>
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a> |
+      <a href="https://www.linkedin.com/in/{{ site.external-links.linkedin }}/" target="_blank" rel="noopener noreferrer">linkedin.com/in/{{ site.external-links.linkedin }}</a> |
+      Iligan City, Philippines
+    </p>
+  </header>
+
+  <section class="skills-section entries-section">
+    <h2>Skills</h2>
+    <div class="entry-card">
+      <ul class="entry-bullets resume-skills">
+        {% for s in p.resume_skills %}<li><strong>{{ s.label }}:</strong> {{ s.items }}</li>{% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section class="skills-section entries-section">
+    <h2>Experience</h2>
+    {% include entries.html items=p.leadership %}
+  </section>
+
+  <section class="skills-section entries-section">
+    <h2>Projects</h2>
+    {% include entries.html items=p.projects %}
+  </section>
+
+  <section class="skills-section entries-section">
+    <h2>Education</h2>
+    {% include entries.html items=p.education %}
+    <h3 class="resume-sub">Awards</h3>
+    {% include entries.html items=p.awards %}
+  </section>
+
+  <section class="skills-section entries-section">
+    <h2>Certifications</h2>
+    {% include entries.html items=p.certifications %}
+  </section>
+</div>

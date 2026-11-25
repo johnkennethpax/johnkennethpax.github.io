@@ -971,3 +971,13 @@ footer p {
     color: var(--link-color); text-decoration: none; overflow-wrap: anywhere;
 }
 .contact-section .contact-links a:hover { color: var(--highlight-color); border-color: var(--highlight-color); }
+
+/* RESUME PAGE */
+.resume-page { max-width: 900px; margin: 0 auto; padding: 0 16px; }
+.resume-header { text-align: center; margin: 30px 0 40px; }
+.resume-header h1 { font-size: 34px; margin-bottom: 6px; }
+.resume-header p { overflow-wrap: anywhere; }
+.resume-page .skills-section { margin-bottom: 40px; }
+.resume-page .resume-sub { font-size: 20px; margin: 20px 0 10px; }
+.entries-section .entry-title a { color: inherit; }
+.entries-section .resume-skills { list-style: none; padding-left: 0; }
