@@ -16,4 +16,4 @@ Battery-powered Raspberry Pi Pico nodes that detect chainsaw sounds with on-devi
 
 ## Credits
 
-Built with [Jekyll](https://jekyllrb.com/) on the [free-to-engineer portfolio template](https://github.com/lowinertia/lowinertia.github.io) by Lowinertia. See `LICENSE`.
+Built with [Jekyll](https://jekyllrb.com/) on the [free-to-engineer portfolio template](https://github.com/leea12/freeToEngineer) by Lowinertia. Licensed under CC0 (see `LICENSE`).
